@@ -4,5 +4,5 @@
 @tailwind utilities;
 
 html, body, #app {
-    @apply w-screen h-screen text-default;
+    @apply w-screen h-screen text-default bg-body;
 }

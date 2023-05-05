@@ -1,7 +1,9 @@
 <template>
   <div class="w-full h-full p-5 demo">
     <div class="">
-      <div class="w-full m-3">主题色</div>
+      <a-divider>
+        <span>主题色</span>
+      </a-divider>
       <div class="w-full h-[120px] flex">
         <div class="w-[150px] h-[100px] mx-3">
           <div class="w-full h-[70%] bg-primary rounded-t"></div>
@@ -36,7 +38,10 @@
       </div>
     </div>
     <div class="">
-      <div class="w-full m-3">按钮</div>
+      <a-divider>
+        <span>按钮</span>
+      </a-divider>
+      <!-- <div class="w-full m-3 text-2xl text-primary font-bold">按钮</div> -->
       <a-button class="mx-3" type="primary">primary</a-button>
       <a-button class="mx-3" type="success" @click="success">success</a-button>
       <a-button class="mx-3" type="alarm">alarm</a-button>
@@ -45,7 +50,9 @@
       <a-button class="mx-3" type="info" @click="info">info</a-button>
     </div>
     <div class="mt-3">
-      <div class="w-full m-3">标签</div>
+      <a-divider>
+        <span>标签</span>
+      </a-divider>
       <a-tag class="mx-3" type="primary">primary</a-tag>
       <a-tag class="mx-3" type="success">success</a-tag>
       <a-tag class="mx-3" type="alarm">alarm</a-tag>
@@ -54,7 +61,9 @@
       <a-tag class="mx-3" type="info">info</a-tag>
     </div>
     <div class="mt-3">
-      <div class="w-full m-3">警告提示</div>
+      <a-divider>
+        <span>警告提示</span>
+      </a-divider>
       <a-alert class="mx-3" message="primary Text" type="primary" />
       <a-alert class="mx-3" message="success Text" type="success" />
       <a-alert class="mx-3" message="alarm Text" type="alarm" />
@@ -63,18 +72,49 @@
       <a-alert class="mx-3" message="info Text" type="info" />
     </div>
     <div class="">
-      <div class="w-full m-3">文字</div>
+      <a-divider>
+        <span>文字</span>
+      </a-divider>
       <div class="flex flex-col">
-        <div class="text-title text-4xl m-3">标题</div>
-        <div class="text-default text-4xl m-3">正文</div>
-        <div class="text-secondary text-4xl m-3">次级</div>
-        <div class="text-disabled text-4xl m-3">禁用、失效</div>
-        <div class="text-white  text-4xl m-3 bg-[#000] w-[80px]">白色</div>
+        <div class="text-title text-4xl m-3">
+          标题
+          <span class="text-base m-2">
+            用于：标题文字、主标题、次标题、表格标题、弹窗标题
+          </span>
+        </div>
+        <div class="text-default text-4xl m-3">
+          正文
+          <span class="text-base m-2">
+            用于：正文、表单标题、表单内容、表格内容文字、默认图标颜色、默认图标图里文字、选项卡默认文字、弹窗内容文字、进度条百分比文字、分页默认文字
+          </span>
+        </div>
+        <div class="text-secondary text-4xl m-3">
+          次级
+          <span class="text-base m-2">
+            用于：说明文字、进度条滚动条操作颜色、基础图标（默认下拉箭头、叉）
+          </span>
+        </div>
+        <div class="text-disabled text-4xl m-3">
+          禁用、失效
+          <span class="text-base m-2">
+            用于：禁用文字、失效图标颜色、提示性文字（请输入）
+          </span>
+        </div>
+        <div class="text-white  text-4xl m-3 bg-[#000] w-[250px]">
+          白色
+          <span class="text-base m-2">
+            用于：含底色文字
+          </span>
+        </div>
       </div>
-      <div class="w-full m-3">组件文字演示</div>
-      <div class="w-full m-3">select选择器</div>
-      <div class="flex">
-        <a-select ref="select" v-model:value="value1" style="width: 120px" @focus="focus" @change="handleChange">
+      <a-divider>
+        <span>组件文字演示</span>
+      </a-divider>
+      <a-divider>
+        <span>select选择器</span>
+      </a-divider>
+      <div class="flex m-3">
+        <a-select ref="select" v-model:value="value1" style="width: 120px">
           <a-select-option value="jack">Jack</a-select-option>
           <a-select-option value="lucy">Lucy</a-select-option>
           <a-select-option value="disabled" disabled>Disabled</a-select-option>
@@ -87,14 +127,80 @@
           <a-select-option value="lucy">Lucy</a-select-option>
         </a-select>
       </div>
+      <a-divider>
+        <span>分页</span>
+      </a-divider>
+      <div class="m-3">
+        <a-pagination v-model:current="current" :total="500" />
+      </div>
+      <div class="m-3">
+        <a-pagination size="small" :total="50" show-size-changer show-quick-jumper />
+      </div>
+      <a-divider>
+        <span>步骤条</span>
+      </a-divider>
+      <div class="m-3">
+        <a-steps :current="1" status="error">
+          <a-step title="Finished" description="This is a description." />
+          <a-step title="In Progress" description="This is a description." />
+          <a-step title="Waiting" description="This is a description." />
+        </a-steps>
+      </div>
+      <a-divider>
+        <span>多选框</span>
+      </a-divider>
+      <div class="m-3">
+        <a-checkbox-group v-model:value="checkbox1" name="checkboxgroup" :options="plainOptions" />
+      </div>
+      <div class="m-3">
+        <a-checkbox-group v-model:value="checkbox2" :options="optionsWithDisabled" disabled>
+          <template #label="{ value }">
+            <span style="color: red">{{ value }}</span>
+          </template>
+        </a-checkbox-group>
+      </div>
+      <a-divider>
+        <span>表单</span>
+      </a-divider>
+      <div class="m-3">
+        <a-form :model="formState" :label-col="labelCol" :wrapper-col="wrapperCol">
+          <a-form-item label="Activity name">
+            <a-input v-model:value="formState.name" placeholder="请输入" />
+          </a-form-item>
+          <a-form-item label="Instant delivery">
+            <a-switch v-model:checked="formState.delivery" />
+          </a-form-item>
+          <a-form-item label="Activity type">
+            <a-checkbox-group v-model:value="formState.type">
+              <a-checkbox value="1" name="type">Online</a-checkbox>
+              <a-checkbox value="2" name="type">Promotion</a-checkbox>
+              <a-checkbox value="3" name="type">Offline</a-checkbox>
+            </a-checkbox-group>
+          </a-form-item>
+          <a-form-item label="Resources">
+            <a-radio-group v-model:value="formState.resource">
+              <a-radio value="1">Sponsor</a-radio>
+              <a-radio value="2">Venue</a-radio>
+            </a-radio-group>
+          </a-form-item>
+          <a-form-item label="Activity form">
+            <a-input v-model:value="formState.desc" type="textarea" />
+          </a-form-item>
+          <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
+            <a-button type="primary">Create</a-button>
+            <a-button style="margin-left: 10px">Cancel</a-button>
+          </a-form-item>
+        </a-form>
+      </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { message } from 'ant-design-vue';
-import { setStyleDom } from './styles/color';
-import { ref } from 'vue';
-setStyleDom()
+// import { setStyleDom } from './styles/color';
+import { reactive, ref } from 'vue';
+// import { ExclamationCircleOutlined  } from 'ant-design/icons-vue';
+// setStyleDom()
 const success = () => {
   message.success('This is a success message', 100);
 };
@@ -110,6 +216,25 @@ const info = () => {
 const value1 = ref('jack')
 const value2 = ref('lucy')
 const value3 = ref('lucy')
+const current = ref()
+const checkbox1 = ref('')
+const checkbox2 = ref('Apple')
+const plainOptions = ['Apple', 'Pear', 'Orange'];
+const optionsWithDisabled = [
+  { value: 'Apple' },
+  { label: 'Pear', value: 'Pear' },
+  { label: 'Orange', value: 'Orange', disabled: false },
+];
+
+const labelCol = { style: { width: '150px' } }
+const wrapperCol = { span: 14 }
+const formState = reactive({
+  name: '',
+  delivery: true,
+  type: '1',
+  resource: '1',
+  desc: ''
+})
 </script>
 <style lang="less" scoped>
 .demo {

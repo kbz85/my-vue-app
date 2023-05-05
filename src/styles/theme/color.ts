@@ -35,23 +35,6 @@ export const parseHexColor = (color: string) => {
   } as IColorObj
 }
 
-// 主题
-export const themeList = {
-  // 主题
-  'white-color': '#ffffff',
-  'primary-color': '#1890ff',
-  'success-color': '#52c41a',
-  'alarm-color': '#faad14',
-  'error-color': '#ff4d4f',
-  'warning-color': '#fadb14',
-  'info-color': '#8b909f',
-  // 文字
-  'title-color': '#000000d9', // 标题文字
-  'text-color': '#000000a6', // 正文
-  'text-color-secondary': '#000000a6', // 次级文字
-  'disabled-color': '#00000040' // 禁用型文字
-}
-
 /**
  * @Description: 配置cssVar
  * @Author: z
@@ -59,7 +42,7 @@ export const themeList = {
  * @LastEditTime: Do not edit
  * @LastEditors: z
  */
-export function setStyleDom() {
+export function setStyleDom(themeList) {
   // 1. 生成css变量
   const keys = Object.keys(themeList)
   const rootCssVar = `:root{$colors}`
