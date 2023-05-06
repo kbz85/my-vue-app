@@ -24,7 +24,7 @@ export const lightThemeList = {
 export const darkThemeList = {
   // 主题
   'white-color': '#ffffff',
-  'primary-color': '#99aa33',
+  'primary-color': '#1890ff',
   'success-color': '#52c41a',
   'alarm-color': '#faad14',
   'error-color': '#ff4d4f',
@@ -45,9 +45,21 @@ export const darkThemeList = {
   // 黑暗模式需要兼容样式
   'background-color-light': '#1f1f1f',
   'component-background': '@background-color-light',
-  'checkbox-check-bg': '@component-background',
+  'background-color-base': '@background-color-light',
+  'item-hover-bg': '@background-color-light',
+  'primary-1': '@primary-color',
+  'checkbox-check-bg': '@background-color-light',
   'alert-message-color': '@white-color',
   'heading-color': '@text-color',
-  'background-color-base': '@background-color-light',
-  'divider-color': '@border-color-split'
+  'divider-color': '@border-color-split',
+  'select-item-selected-bg': '@primary-color',
+  'picker-basic-cell-hover-with-range-color': 'fade(@primary-color, 20)',
+  'picker-basic-cell-active-with-range-color': 'fade(@primary-color, 20)',
+  'slider-dot-border-color-active': '@primary-color',
+  'slider-track-color-active': '@primary-color',
+  'slider-rail-background-color-hover': '@border-color-base',
+  'slider-track-background-color': '@primary-color',
+  'slider-track-background-color-hover': '@primary-color',
+  'tree-node-selected-bg':'@primary-color',
+  // 'select-selection-item-bg': '@background-color-light'
 }

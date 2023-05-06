@@ -192,11 +192,92 @@
           </a-form-item>
         </a-form>
       </div>
+      <a-divider>
+        <span>日期时间</span>
+      </a-divider>
+      <div class="m-3">
+        <a-date-picker v-model:value="time1" />
+        <a-date-picker v-model:value="time2" />
+        <a-date-picker v-model:value="time3" picker="month" />
+        <a-range-picker v-model:value="time4" />
+        <a-date-picker v-model:value="time5" />
+        <a-date-picker v-model:value="time6" picker="week" />
+      </div>
+      <a-divider>
+        <span>级联</span>
+      </a-divider>
+      <div class="m-3">
+        <a-cascader v-model:value="cascader1" style="width: 100%" multiple max-tag-count="responsive" :options="options"
+          placeholder="Please select"></a-cascader>
+      </div>
+      <a-divider>
+        <span>滑动条</span>
+      </a-divider>
+      <div class="m-3">
+        <a-slider v-model:value="value1" :marks="marks">
+          <template #mark="{ label, point }">
+            <template v-if="point === 100">
+              <strong>{{ label }}</strong>
+            </template>
+            <template v-else>{{ label }}</template>
+          </template>
+        </a-slider>
+      </div>
+      <a-divider>
+        <span>树选择</span>
+      </a-divider>
+      <div class="m-3">
+        <a-tree-select v-model:value="tree1" show-search style="width: 100%"
+          :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }" placeholder="Please select" allow-clear
+          tree-default-expand-all :tree-data="treeData">
+        </a-tree-select>
+      </div>
+      <a-divider>
+        <span>气泡卡片</span>
+      </a-divider>
+      <div class="m-3">
+        <a-popover title="Title" trigger="hover">
+          <template #content>
+            <p>Content</p>
+            <p>Content</p>
+          </template>
+          <a-button>Hover me</a-button>
+        </a-popover>
+        <a-popover title="Title" trigger="focus">
+          <template #content>
+            <p>Content</p>
+            <p>Content</p>
+          </template>
+          <a-button>Focus me</a-button>
+        </a-popover>
+        <a-popover title="Title" trigger="click">
+          <template #content>
+            <p>Content</p>
+            <p>Content</p>
+          </template>
+          <a-button>Click me</a-button>
+        </a-popover>
+      </div>
+      <a-divider>
+        <span>表格</span>
+      </a-divider>
+      <div class="m-3">
+        <vxe-table border :data="tableData">
+          <vxe-column type="seq" width="60"></vxe-column>
+          <vxe-column field="name" title="Name">
+            <template #default="{ row }">
+              <span>自定义插槽模板 {{ row.name }}</span>
+            </template>
+          </vxe-column>
+          <vxe-column field="sex" title="Sex"></vxe-column>
+          <vxe-column field="age" title="Age"></vxe-column>
+        </vxe-table>
+      </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { message } from 'ant-design-vue';
+import { CascaderProps, TreeSelectProps, message } from 'ant-design-vue';
 // import { setStyleDom } from './styles/color';
 import { reactive, ref } from 'vue';
 // import { ExclamationCircleOutlined  } from 'ant-design/icons-vue';
@@ -235,6 +316,92 @@ const formState = reactive({
   resource: '1',
   desc: ''
 })
+
+const time1 = ref()
+const time2 = ref()
+const time3 = ref()
+const time4 = ref()
+const time5 = ref()
+const time6 = ref()
+const cascader1 = ref()
+const options: CascaderProps['options'] = [
+  {
+    label: 'Light',
+    value: 'light',
+    children: new Array(20)
+      .fill(null)
+      .map((_, index) => ({ label: `Number ${index}`, value: index })),
+  },
+  {
+    label: 'Bamboo',
+    value: 'bamboo',
+    children: [
+      {
+        label: 'Little',
+        value: 'little',
+        children: [
+          {
+            label: 'Toy Fish',
+            value: 'fish',
+          },
+          {
+            label: 'Toy Cards',
+            value: 'cards',
+          },
+          {
+            label: 'Toy Bird',
+            value: 'bird',
+          },
+        ],
+      },
+    ],
+  },
+]
+const marks = ref<Record<number, any>>({
+  0: '0°C',
+  26: '26°C',
+  37: '37°C',
+  100: {
+    style: {
+      color: '#f50',
+    },
+    label: '100°C',
+  },
+})
+const tree1 = ref()
+const treeData = ref<TreeSelectProps['treeData']>([
+  {
+    title: 'parent 1',
+    value: 'parent 1',
+    children: [
+      {
+        title: 'parent 1-0',
+        value: 'parent 1-0',
+        children: [
+          {
+            title: 'my leaf',
+            value: 'leaf1',
+          },
+          {
+            title: 'your leaf',
+            value: 'leaf2',
+          },
+        ],
+      },
+      {
+        title: 'parent 1-1',
+        value: 'parent 1-1',
+      },
+    ],
+  },
+])
+
+const tableData = ref<UserVO[]>([
+  { id: 10001, name: 'Test1', role: 'Develop', sex: 'Man', age: 28, address: 'test abc' },
+  { id: 10002, name: 'Test2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
+  { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
+  { id: 10004, name: 'Test4', role: 'Designer', sex: 'Women', age: 24, address: 'Shanghai' }
+])
 </script>
 <style lang="less" scoped>
 .demo {
