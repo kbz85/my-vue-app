@@ -1,29 +1,30 @@
-import { src, dest, series } from 'gulp'
+import { src, dest, series, parallel } from 'gulp'
 import { resolve } from 'path'
 import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
+import less from 'gulp-less'
 import autoprefixer from 'gulp-autoprefixer'
-// const gulp = require('gulp')
-// const path = require('path')
-// const sass = require('gulp-sass')(require('sass'))
-// const autoprefixer = require('gulp-autoprefixer')
+
 const sass = gulpSass(dartSass);
-function buildVxeTableCss() {
-    const vxePath = resolve(__dirname, '../src/styles2/')
-    console.log(123123, vxePath)
-    return src(`${vxePath}/index.scss`)
-        .pipe(sass())
+const vxePath = resolve(__dirname, '../src/styles/')
+export const buildScssCss = () => {
+    return src(`${vxePath}/*.scss`)
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
-        .pipe(dest('dist'))
+        .pipe(dest('dist/scss'))
 }
-// module.exports = gulp.task('css', function () {
-//     buildVxeTableCss()
-// })
 
-series(
-    buildVxeTableCss()
+export const buildLessCss = () => {
+    return src(`${vxePath}/*.less`)
+        .pipe(less({
+            javascriptEnabled: true
+        }))
+        .pipe(autoprefixer())
+        .pipe(dest('dist/less'))
+}
+
+
+export default series(
+    async () => buildScssCss(),
+    async () => buildLessCss()
 )
-// buildVxeTableCss()
-// export default 
-
-//   "type": "module",
