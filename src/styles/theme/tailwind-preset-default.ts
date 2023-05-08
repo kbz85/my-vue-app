@@ -19,8 +19,8 @@ module.exports = {
             borderColor: {
                 default: 'var(--border-color-base)',
                 split: 'var(--border-color-split)',
-                tip: 'var(--boder-color-tip)',
-                disable: 'var(border-color-disable)',
+                tip: 'var(--border-color-tip)',
+                disable: 'var(--border-color-disable)',
             },
             backgroundColor: {
                 body: 'var(--bg-body)'

@@ -22,12 +22,16 @@ export interface ThemeList {
 }
 
 export interface VxeTableToAntVar {
-  '$vxe-font-color': 'text-color'
-  '$vxe-font-color': 'text-color'
-  '$vxe-primary-color': 'primary-color'
-  '$vxe-success-color': 'success-color'
-  '$vxe-info-color': 'info-color'
-  '$vxe-warning-color': 'warning-color'
-  '$vxe-danger-color': 'error-color'
-  '$vxe-disabled-color': 'disabled-color'
+  '$vxe-font-color': 'text-color',
+  '$vxe-primary-color': 'primary-color',
+  '$vxe-success-color': 'success-color',
+  '$vxe-info-color': 'info-color',
+  '$vxe-warning-color': 'warning-color',
+  '$vxe-danger-color': 'error-color',
+  '$vxe-disabled-color': 'disabled-color',
+  '$vxe-table-header-font-color': 'title-color',
+  '$vxe-table-footer-font-color': 'font-color',
+  '$vxe-table-header-background-color': 'border-color-disable',
+  '$vxe-table-body-background-color': 'bg-body',
+  '$vxe-table-border-color': 'border-color-tip'
 }

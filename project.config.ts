@@ -37,10 +37,10 @@ export const darkThemeList = {
   'text-color-secondary': '#ffffff73', // 次级文字
   'disabled-color': '#ffffff40', // 禁用型文字
   // 边框
-  'border-color-base': '#ffffff26', // 边框1
-  'border-color-split': '#ffffff0f', // 边框2
-  'border-color-tip': '#ffffff0a', // 边框3
-  'border-color-disable': '#ffffff05', // 边框4
+  'border-color-base': '#ffffff40', // 边框1
+  'border-color-split': '#ffffff33', // 边框2
+  'border-color-tip': '#ffffff1f', // 边框3
+  'border-color-disable': '#ffffff14', // 边框4
   // 背景
   'bg-body': '#000000',
   // 黑暗模式需要兼容样式

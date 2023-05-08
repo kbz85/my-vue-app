@@ -39,40 +39,6 @@
     </div>
     <div class="">
       <a-divider>
-        <span>按钮</span>
-      </a-divider>
-      <!-- <div class="w-full m-3 text-2xl text-primary font-bold">按钮</div> -->
-      <a-button class="mx-3" type="primary">primary</a-button>
-      <a-button class="mx-3" type="success" @click="success">success</a-button>
-      <a-button class="mx-3" type="alarm">alarm</a-button>
-      <a-button class="mx-3" type="warning" @click="warning">warning</a-button>
-      <a-button class="mx-3" type="error" @click="error">error</a-button>
-      <a-button class="mx-3" type="info" @click="info">info</a-button>
-    </div>
-    <div class="mt-3">
-      <a-divider>
-        <span>标签</span>
-      </a-divider>
-      <a-tag class="mx-3" type="primary">primary</a-tag>
-      <a-tag class="mx-3" type="success">success</a-tag>
-      <a-tag class="mx-3" type="alarm">alarm</a-tag>
-      <a-tag class="mx-3" type="warning">warning</a-tag>
-      <a-tag class="mx-3" type="error">error</a-tag>
-      <a-tag class="mx-3" type="info">info</a-tag>
-    </div>
-    <div class="mt-3">
-      <a-divider>
-        <span>警告提示</span>
-      </a-divider>
-      <a-alert class="mx-3" message="primary Text" type="primary" />
-      <a-alert class="mx-3" message="success Text" type="success" />
-      <a-alert class="mx-3" message="alarm Text" type="alarm" />
-      <a-alert class="mx-3" message="warning Text" type="warning" />
-      <a-alert class="mx-3" message="error Text" type="error" />
-      <a-alert class="mx-3" message="info Text" type="info" />
-    </div>
-    <div class="">
-      <a-divider>
         <span>文字</span>
       </a-divider>
       <div class="flex flex-col">
@@ -107,6 +73,53 @@
           </span>
         </div>
       </div>
+    </div>
+    <div class="">
+      <a-divider>
+        <span>边框</span>
+      </a-divider>
+      <div class="w-full h-[120px] flex">
+        <div class="w-[150px] h-[120px] mx-3 border-2 border-default border-solid rounded"></div>
+        <div class="w-[150px] h-[120px] mx-3 border-2 border-split border-solid rounded"></div>
+        <div class="w-[150px] h-[120px] mx-3 border-2 border-tip border-solid rounded"></div>
+        <div class="w-[150px] h-[120px] mx-3 border-2 border-disable border-solid rounded"></div>
+      </div>
+    </div>
+    <div class="">
+      <a-divider>
+        <span>按钮</span>
+      </a-divider>
+      <!-- <div class="w-full m-3 text-2xl text-primary font-bold">按钮</div> -->
+      <a-button class="mx-3" type="primary">primary</a-button>
+      <a-button class="mx-3" type="success" @click="success">success</a-button>
+      <a-button class="mx-3" type="alarm">alarm</a-button>
+      <a-button class="mx-3" type="warning" @click="warning">warning</a-button>
+      <a-button class="mx-3" type="error" @click="error">error</a-button>
+      <a-button class="mx-3" type="info" @click="info">info</a-button>
+    </div>
+    <div class="mt-3">
+      <a-divider>
+        <span>标签</span>
+      </a-divider>
+      <a-tag class="mx-3" type="primary">primary</a-tag>
+      <a-tag class="mx-3" type="success">success</a-tag>
+      <a-tag class="mx-3" type="alarm">alarm</a-tag>
+      <a-tag class="mx-3" type="warning">warning</a-tag>
+      <a-tag class="mx-3" type="error">error</a-tag>
+      <a-tag class="mx-3" type="info">info</a-tag>
+    </div>
+    <div class="mt-3">
+      <a-divider>
+        <span>警告提示</span>
+      </a-divider>
+      <a-alert class="mx-3" message="primary Text" type="primary" />
+      <a-alert class="mx-3" message="success Text" type="success" />
+      <a-alert class="mx-3" message="alarm Text" type="alarm" />
+      <a-alert class="mx-3" message="warning Text" type="warning" />
+      <a-alert class="mx-3" message="error Text" type="error" />
+      <a-alert class="mx-3" message="info Text" type="info" />
+    </div>
+    <div class="">
       <a-divider>
         <span>组件文字演示</span>
       </a-divider>
@@ -262,7 +275,7 @@
         <span>表格</span>
       </a-divider>
       <div class="m-3">
-        <vxe-table border :data="tableData" :row-config="{ isCurrent: true, isHover: true }">
+        <vxe-table border :data="tableData" :row-config="{isCurrent: true}">
           <vxe-column type="seq" width="60"></vxe-column>
           <vxe-column field="name" title="Name">
             <template #default="{ row }">
@@ -396,7 +409,7 @@ const treeData = ref<TreeSelectProps['treeData']>([
   },
 ])
 
-const tableData = ref([
+const tableData = ref<UserVO[]>([
   { id: 10001, name: 'Test1', role: 'Develop', sex: 'Man', age: 28, address: 'test abc' },
   { id: 10002, name: 'Test2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
   { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },

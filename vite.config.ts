@@ -5,7 +5,6 @@ import { generateVxeStyle } from './src/styles/theme/color'
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd())
-  console.log(env);
   
   return {
     // vite config
