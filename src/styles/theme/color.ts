@@ -8,7 +8,7 @@
  * @param {*} str
  */
 export function humpToUnderline(str) {
-	return str.replace(/([A-Z])/g,"-$1").toLowerCase()
+  return str.replace(/([A-Z])/g, "-$1").toLowerCase()
 }
 /**
  * 16进制颜色字符串解析为颜色对象
@@ -67,4 +67,28 @@ export function setStyleDom(themeList) {
   if (currentStyle) head.removeChild(currentStyle)
 
   head.appendChild(styleNode)
+}
+
+
+export function generateVxeStyle(themeList, valueMapping: VxeTableToAntVar) {
+  const baseVxeVar = {
+    '$vxe-font-color': 'text-color',
+    '$vxe-primary-color': 'primary-color',
+    '$vxe-success-color': 'success-color',
+    '$vxe-info-color': 'info-color',
+    '$vxe-warning-color': 'warning-color',
+    '$vxe-danger-color': 'error-color',
+    '$vxe-disabled-color': 'disabled-color',
+    '$vxe-table-header-font-color': 'title-color',
+    '$vxe-table-footer-font-color': 'font-color',
+    '$vxe-table-header-background-color': 'border-color-disable',
+    '$vxe-table-body-background-color': 'bg-body',
+    '$vxe-table-border-color': 'border-color-tip'
+  }
+  valueMapping = Object.assign({}, baseVxeVar, valueMapping)
+  let str = ''
+  for (let key in valueMapping) {
+    str += `${key}: ${themeList[valueMapping[key]]};`
+  }
+  return str
 }

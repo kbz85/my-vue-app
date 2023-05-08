@@ -18,7 +18,8 @@ export const lightThemeList = {
   'border-color-tip': '#0000000a', // 边框3
   'border-color-disable': '#00000005', // 边框4
   // 背景
-  'bg-body': '#00000000'
+  'bg-body': '#00000000',
+  
 }
 
 export const darkThemeList = {

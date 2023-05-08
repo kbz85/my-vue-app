@@ -20,3 +20,14 @@ export interface ThemeList {
   // 背景
   'bg-body': string
 }
+
+export interface VxeTableToAntVar {
+  '$vxe-font-color': 'text-color'
+  '$vxe-font-color': 'text-color'
+  '$vxe-primary-color': 'primary-color'
+  '$vxe-success-color': 'success-color'
+  '$vxe-info-color': 'info-color'
+  '$vxe-warning-color': 'warning-color'
+  '$vxe-danger-color': 'error-color'
+  '$vxe-disabled-color': 'disabled-color'
+}
