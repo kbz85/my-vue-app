@@ -6,10 +6,14 @@
       </a-divider>
       <div class="w-full h-[160px] flex">
         <div class="w-[150px] h-[100px] mx-3" v-for="item of themeList" :key="item">
-          <div :class="['bg-'+ item]" class="w-full h-[70%] rounded-t text-white flex items-center justify-center">默认</div>
-          <div :class="['bg-'+ item + '-hover']" class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标经过</div>
-          <div :class="['bg-'+ item + '-active']" class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标点击</div>
-          <div :class="['bg-'+ item + '-disable']" class="w-full h-[30%] rounded-b float-left text-white flex items-center justify-center">禁用</div>
+          <div :class="['bg-' + item]" class="w-full h-[70%] rounded-t text-white flex items-center justify-center">默认
+          </div>
+          <div :class="['bg-' + item + '-hover']"
+            class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标经过</div>
+          <div :class="['bg-' + item + '-active']"
+            class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标点击</div>
+          <div :class="['bg-' + item + '-disable']"
+            class="w-full h-[30%] rounded-b float-left text-white flex items-center justify-center">禁用</div>
         </div>
       </div>
     </div>
@@ -65,48 +69,86 @@
       <a-divider>
         <span>按钮</span>
       </a-divider>
-      <!-- <div class="w-full m-3 text-2xl font-bold text-primary">按钮</div> -->
       <div class="">
-        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item">{{ item  }}</a-button>
+        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item">{{ item }}</a-button>
       </div>
       <div class="my-3">
-        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item" disabled>{{  item  }}</a-button>
+        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item" disabled>{{ item }}</a-button>
       </div>
       <div class="my-3">
-        <a-button v-for="item of themeList" class="mx-3" :type="item + '-line'" :key="item">{{  item  }}</a-button>
+        <a-button v-for="item of themeList" class="mx-3" :type="item + '-line'" :key="item">{{ item }}</a-button>
       </div>
       <div class="my-3">
-        <a-button v-for="item of themeList" class="mx-3" :type="item + '-line'" :key="item" disabled>{{  item  }}</a-button>
+        <a-button v-for="item of themeList" class="mx-3" :type="item + '-text'" :key="item">{{ item }}</a-button>
       </div>
       <div class="my-3">
-        <a-button v-for="item of themeList" class="mx-3" :type="item + '-text'" :key="item">{{  item  }}</a-button>
+        <a-button v-for="item of themeList" class="mx-3" size="small" :type="item" :key="item">{{ item }}</a-button>
+      </div>
+      <div class="my-3">
+        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item">{{ item }}</a-button>
+      </div>
+      <div class="my-3">
+        <a-button v-for="item of themeList" class="mx-3" size="large" :type="item" :key="item">{{ item }}</a-button>
+      </div>
+    </div>
+    <div class="mt-3">
+      <a-divider>
+        <span>下拉菜单</span>
+      </a-divider>
+      <div class="flex">
+        <a-dropdown class="mx-3">
+          <a-button type="primary">
+            下拉框(hover展开)
+          </a-button>
+          <template #overlay>
+            <a-menu>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+            </a-menu>
+          </template>
+        </a-dropdown>
+        <a-dropdown :trigger="['click']"  class="mx-3">
+          <a-button type="primary">
+            下拉框(点击展开)
+          </a-button>
+          <template #overlay>
+            <a-menu>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+            </a-menu>
+          </template>
+        </a-dropdown>
+        <a-dropdown :trigger="['contextmenu']"  class="mx-3">
+          <a-button type="primary" @click.prevent>
+            下拉框(右键展开)
+          </a-button>
+          <template #overlay>
+            <a-menu>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+              <a-menu-item><span>1st menu item111111111111</span></a-menu-item>
+            </a-menu>
+          </template>
+        </a-dropdown>
       </div>
     </div>
     <div class="mt-3">
       <a-divider>
         <span>标签</span>
       </a-divider>
-      <a-tag class="mx-3" type="primary">primary</a-tag>
-      <a-tag class="mx-3" type="success">success</a-tag>
-      <a-tag class="mx-3" type="alarm">alarm</a-tag>
-      <a-tag class="mx-3" type="warning">warning</a-tag>
-      <a-tag class="mx-3" type="error">error</a-tag>
-      <a-tag class="mx-3" type="info">info</a-tag>
+      <a-tag class="mx-3" v-for="item of themeList" :type="item" :key="item">primary</a-tag>
     </div>
     <div class="mt-3">
       <a-divider>
         <span>警告提示</span>
       </a-divider>
-      <a-alert class="mx-3" message="primary Text" type="primary" />
-      <a-alert class="mx-3" message="success Text" type="success" />
-      <a-alert class="mx-3" message="alarm Text" type="alarm" />
-      <a-alert class="mx-3" message="warning Text" type="warning" />
-      <a-alert class="mx-3" message="error Text" type="error" />
-      <a-alert class="mx-3" message="info Text" type="info" />
+      <a-alert class="mx-3" v-for="item of themeList" :type="item" :key="item" :message="item + 'Text'" />
     </div>
     <div class="">
       <a-divider>
-        <span>组件文字演示</span>
+        <span>组件演示</span>
       </a-divider>
       <a-divider>
         <span>select选择器</span>
@@ -282,18 +324,18 @@ const themeList = ref([
   'primary', 'success', 'alarm', 'error', 'warning', 'info'
 ])
 // setStyleDom()
-const success = () => {
-  message.success('This is a success message', 100);
-};
-const error = () => {
-  message.error('This is an error message', 100);
-};
-const warning = () => {
-  message.warning('This is a warning message', 100);
-};
-const info = () => {
-  message.info('This is a info message', 100);
-};
+// const success = () => {
+//   message.success('This is a success message', 100);
+// };
+// const error = () => {
+//   message.error('This is an error message', 100);
+// };
+// const warning = () => {
+//   message.warning('This is a warning message', 100);
+// };
+// const info = () => {
+//   message.info('This is a info message', 100);
+// };
 const value1 = ref('jack')
 const value2 = ref('lucy')
 const value3 = ref('lucy')

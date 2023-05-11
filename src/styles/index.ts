@@ -1,5 +1,5 @@
-import './vxe-table.scss'
-import './antd.less'
+import './theme/vxe-table.scss'
+import './theme/antd.less'
 import { setStyleDom, generateVxeStyle } from './theme/color'
 import { ThemeList } from './theme/type'
 
