@@ -1,4 +1,5 @@
 
+import { ThemeList } from './type'
 /**
  * @Description: 驼峰转下划线
  * @Author: z
@@ -48,7 +49,6 @@ export function setStyleDom(themeList) {
   const rootCssVar = `:root{$colors}`
   let rootColors = ''
   keys.forEach(key => {
-    // const keyTemp = humpToUnderline(key)
     const color = parseHexColor(themeList[key])
     rootColors += `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a}); \n`
     rootColors += `--${key}-tailwindcss: ${color.r} ${color.g} ${color.b}; \n`
@@ -70,7 +70,7 @@ export function setStyleDom(themeList) {
 }
 
 
-export function generateVxeStyle(themeList, valueMapping: VxeTableToAntVar) {
+export function generateVxeStyle(themeList: ThemeList, valueMapping: VxeTableToAntVar) {
   const baseVxeVar = {
     '$vxe-font-color': 'text-color',
     '$vxe-primary-color': 'primary-color',
@@ -83,7 +83,12 @@ export function generateVxeStyle(themeList, valueMapping: VxeTableToAntVar) {
     '$vxe-table-footer-font-color': 'font-color',
     '$vxe-table-header-background-color': 'border-color-disable',
     '$vxe-table-body-background-color': 'bg-body',
-    '$vxe-table-border-color': 'border-color-tip'
+    '$vxe-table-border-color': 'border-color-tip',
+    '$vxe-table-row-hover-background-color': 'table-hover',
+    '$vxe-table-row-striped-background-color': 'table-hover',
+    '$vxe-table-row-hover-striped-background-color': 'table-hover',
+    '$vxe-table-row-current-background-color': 'table-current',
+    '$vxe-table-row-hover-current-background-color': 'table-current'
   }
   valueMapping = Object.assign({}, baseVxeVar, valueMapping)
   let str = ''

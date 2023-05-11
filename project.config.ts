@@ -2,11 +2,29 @@ export const lightThemeList = {
   // 主题
   'white-color': '#ffffff',
   'primary-color': '#1890ff',
+  'primary-color-hover': '#309bff',
+  'primary-color-active': '#1681e5',
+  'primary-color-disable': '#74bdff',
   'success-color': '#52c41a',
+  'success-color-hover': '#64ca31',
+  'success-color-active': '#4ab017',
+  'success-color-disable': '#97dc76',
   'alarm-color': '#faad14',
+  'alarm-color-hover': '#fbb52c',
+  'alarm-color-active': '#e19b12',
+  'alarm-color-disable': '#fcce72',
   'error-color': '#ff4d4f',
+  'error-color-hover': '#ff5f61',
+  'error-color-active': '#e54547',
+  'error-color-disable': '#ff9496',
   'warning-color': '#fadb14',
+  'warning-color-hover': '#fbd42c',
+  'warning-color-active': '#e1c512',
+  'warning-color-disable': '#fcea72',
   'info-color': '#8b909f',
+  'info-color-hover': '#979ba9',
+  'info-color-active': '#7d818f',
+  'info-color-disable': '#babdc6',
   // 文字
   'title-color': '#000000d9', // 标题文字
   'text-color': '#000000a6', // 正文
@@ -19,7 +37,8 @@ export const lightThemeList = {
   'border-color-disable': '#00000005', // 边框4
   // 背景
   'bg-body': '#00000000',
-  
+  'table-hover': '#1890ff87',
+  'table-current': '#1890ffa8'
 }
 
 export const darkThemeList = {
@@ -61,6 +80,8 @@ export const darkThemeList = {
   'slider-rail-background-color-hover': '@border-color-base',
   'slider-track-background-color': '@primary-color',
   'slider-track-background-color-hover': '@primary-color',
-  'tree-node-selected-bg':'@primary-color',
+  'tree-node-selected-bg': '@primary-color',
+  'table-hover': '#1890ff22',
+  'table-current': '#1890ffa8'
   // 'select-selection-item-bg': '@background-color-light'
 }

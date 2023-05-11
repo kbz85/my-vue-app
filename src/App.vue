@@ -4,36 +4,12 @@
       <a-divider>
         <span>主题色</span>
       </a-divider>
-      <div class="w-full h-[120px] flex">
-        <div class="w-[150px] h-[100px] mx-3">
-          <div class="w-full h-[70%] bg-primary rounded-t"></div>
-          <div class="w-[50%] h-[30%] bg-primary bg-opacity-50 rounded-bl float-left"></div>
-          <div class="w-[50%] h-[30%] bg-primary bg-opacity-10 rounded-br float-left"></div>
-        </div>
-        <div class="w-[150px] h-[100px] mx-3">
-          <div class="w-full h-[70%] bg-success rounded-t"></div>
-          <div class="w-[50%] h-[30%] bg-success bg-opacity-50 rounded-bl float-left"></div>
-          <div class="w-[50%] h-[30%] bg-success bg-opacity-10 rounded-br float-left"></div>
-        </div>
-        <div class="w-[150px] h-[100px] mx-3">
-          <div class="w-full h-[70%] bg-alarm rounded-t"></div>
-          <div class="w-[50%] h-[30%] bg-alarm bg-opacity-50 rounded-bl float-left"></div>
-          <div class="w-[50%] h-[30%] bg-alarm bg-opacity-10 rounded-br float-left"></div>
-        </div>
-        <div class="w-[150px] h-[100px] mx-3">
-          <div class="w-full h-[70%] bg-warning rounded-t"></div>
-          <div class="w-[50%] h-[30%] bg-warning bg-opacity-50 rounded-bl float-left"></div>
-          <div class="w-[50%] h-[30%] bg-warning bg-opacity-10 rounded-br float-left"></div>
-        </div>
-        <div class="w-[150px] h-[100px] mx-3">
-          <div class="w-full h-[70%] bg-error rounded-t"></div>
-          <div class="w-[50%] h-[30%] bg-error bg-opacity-50 rounded-bl float-left"></div>
-          <div class="w-[50%] h-[30%] bg-error bg-opacity-10 rounded-br float-left"></div>
-        </div>
-        <div class="w-[150px] h-[100px] mx-3">
-          <div class="w-full h-[70%] bg-info rounded-t"></div>
-          <div class="w-[50%] h-[30%] bg-info bg-opacity-50 rounded-bl float-left"></div>
-          <div class="w-[50%] h-[30%] bg-info bg-opacity-10 rounded-br float-left"></div>
+      <div class="w-full h-[160px] flex">
+        <div class="w-[150px] h-[100px] mx-3" v-for="item of themeList" :key="item">
+          <div :class="['bg-'+ item]" class="w-full h-[70%] rounded-t text-white flex items-center justify-center">默认</div>
+          <div :class="['bg-'+ item + '-hover']" class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标经过</div>
+          <div :class="['bg-'+ item + '-active']" class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标点击</div>
+          <div :class="['bg-'+ item + '-disable']" class="w-full h-[30%] rounded-b float-left text-white flex items-center justify-center">禁用</div>
         </div>
       </div>
     </div>
@@ -42,33 +18,33 @@
         <span>文字</span>
       </a-divider>
       <div class="flex flex-col">
-        <div class="text-title text-4xl m-3">
+        <div class="m-3 text-4xl text-title">
           标题
-          <span class="text-base m-2">
+          <span class="m-2 text-base">
             用于：标题文字、主标题、次标题、表格标题、弹窗标题
           </span>
         </div>
-        <div class="text-default text-4xl m-3">
+        <div class="m-3 text-4xl text-default">
           正文
-          <span class="text-base m-2">
+          <span class="m-2 text-base">
             用于：正文、表单标题、表单内容、表格内容文字、默认图标颜色、默认图标图里文字、选项卡默认文字、弹窗内容文字、进度条百分比文字、分页默认文字
           </span>
         </div>
-        <div class="text-secondary text-4xl m-3">
+        <div class="m-3 text-4xl text-secondary">
           次级
-          <span class="text-base m-2">
+          <span class="m-2 text-base">
             用于：说明文字、进度条滚动条操作颜色、基础图标（默认下拉箭头、叉）
           </span>
         </div>
-        <div class="text-disabled text-4xl m-3">
+        <div class="m-3 text-4xl text-disabled">
           禁用、失效
-          <span class="text-base m-2">
+          <span class="m-2 text-base">
             用于：禁用文字、失效图标颜色、提示性文字（请输入）
           </span>
         </div>
         <div class="text-white  text-4xl m-3 bg-[#000] w-[250px]">
           白色
-          <span class="text-base m-2">
+          <span class="m-2 text-base">
             用于：含底色文字
           </span>
         </div>
@@ -89,13 +65,22 @@
       <a-divider>
         <span>按钮</span>
       </a-divider>
-      <!-- <div class="w-full m-3 text-2xl text-primary font-bold">按钮</div> -->
-      <a-button class="mx-3" type="primary">primary</a-button>
-      <a-button class="mx-3" type="success" @click="success">success</a-button>
-      <a-button class="mx-3" type="alarm">alarm</a-button>
-      <a-button class="mx-3" type="warning" @click="warning">warning</a-button>
-      <a-button class="mx-3" type="error" @click="error">error</a-button>
-      <a-button class="mx-3" type="info" @click="info">info</a-button>
+      <!-- <div class="w-full m-3 text-2xl font-bold text-primary">按钮</div> -->
+      <div class="">
+        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item">{{ item  }}</a-button>
+      </div>
+      <div class="my-3">
+        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item" disabled>{{  item  }}</a-button>
+      </div>
+      <div class="my-3">
+        <a-button v-for="item of themeList" class="mx-3" :type="item + '-line'" :key="item">{{  item  }}</a-button>
+      </div>
+      <div class="my-3">
+        <a-button v-for="item of themeList" class="mx-3" :type="item + '-line'" :key="item" disabled>{{  item  }}</a-button>
+      </div>
+      <div class="my-3">
+        <a-button v-for="item of themeList" class="mx-3" :type="item + '-text'" :key="item">{{  item  }}</a-button>
+      </div>
     </div>
     <div class="mt-3">
       <a-divider>
@@ -275,7 +260,7 @@
         <span>表格</span>
       </a-divider>
       <div class="m-3">
-        <vxe-table border :data="tableData" :row-config="{isCurrent: true}">
+        <vxe-table border :data="tableData" :row-config="{ isCurrent: true, isHover: true }">
           <vxe-column type="seq" width="60"></vxe-column>
           <vxe-column field="name" title="Name">
             <template #default="{ row }">
@@ -293,7 +278,9 @@
 import { CascaderProps, TreeSelectProps, message } from 'ant-design-vue';
 // import { setStyleDom } from './styles/color';
 import { reactive, ref } from 'vue';
-// import { ExclamationCircleOutlined  } from 'ant-design/icons-vue';
+const themeList = ref([
+  'primary', 'success', 'alarm', 'error', 'warning', 'info'
+])
 // setStyleDom()
 const success = () => {
   message.success('This is a success message', 100);

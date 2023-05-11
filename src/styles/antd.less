@@ -1,21 +1,4 @@
 @import 'ant-design-vue/dist/antd.less';
-.ant-btn {
-    &.ant-btn-success {
-        @apply bg-success border-success text-white;
-    }
-    &.ant-btn-alarm {
-        @apply bg-alarm border-alarm text-white;
-    }
-    &.ant-btn-error {
-        @apply bg-error border-error text-white;
-    }
-    &.ant-btn-warning {
-        @apply bg-warning border-warning text-white;
-    }
-    &.ant-btn-info {
-        @apply bg-info border-info text-white;
-    }
-}
 
 .ant-tag {
     @apply mx-3 !important;
@@ -70,3 +53,67 @@
         }
     }
 }
+
+@selectors: primary, success, alarm, warning, error, info;
+
+each(@selectors, {
+  .ant-btn-@{value} {  
+    @apply ~ "bg-@{value} border-@{value} text-white";   
+    &:hover {
+        @apply ~ "bg-@{value}-hover border-@{value}-hover text-white";   
+    }
+    &:active, &:focus {
+        @apply ~ "bg-@{value}-active border-@{value}-active text-white";   
+    }
+    // 禁用
+    &[disabled] {
+        @apply ~ "bg-@{value}-disable border-@{value}-disable text-white";   
+        &:hover {
+            @apply ~ "bg-@{value}-disable border-@{value}-disable text-white";   
+        }
+        &:active, &:focus {
+            @apply ~ "bg-@{value}-disable border-@{value}-disable text-white";   
+        }
+    } 
+  }
+    // 二级按钮
+    .ant-btn-@{value}-line {
+        @apply ~ "border-@{value} text-@{value} bg-transparent";  
+        &:hover {
+            @apply ~ "border-@{value}-hover text-@{value}-hover bg-transparent";  
+        }
+        &:active, &:focus {
+            @apply ~ "border-@{value}-active text-@{value}-active bg-transparent";  
+        } 
+        // 禁用
+        &[disabled] {
+            @apply ~ "border-@{value}-disable text-@{value}-disable bg-transparent";  
+            &:hover {
+                @apply ~ "border-@{value}-disable text-@{value}-disable bg-transparent";    
+            }
+            &:active, &:focus {
+                @apply ~ "border-@{value}-disable text-@{value}-disable bg-transparent";   
+            }
+        }  
+    }
+    // （文字、图标）按钮
+    .ant-btn-@{value}-text {
+        @apply ~ "border-@{value} border-opacity-0 text-@{value} bg-@{value} bg-opacity-0";  
+        &:hover {
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-hover bg-@{value} bg-opacity-0";  
+        }
+        &:active, &:focus {
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-active bg-@{value} bg-opacity-0";  
+        } 
+        // 禁用
+        &[disabled] {
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-disable bg-@{value} bg-opacity-0";  
+            &:hover {
+                @apply ~ "border-@{value} border-opacity-0 text-@{value}-disable bg-@{value} bg-opacity-0";    
+            }
+            &:active, &:focus {
+                @apply ~ "border-@{value} border-opacity-0 text-@{value}-disable bg-@{value} bg-opacity-0";   
+            }
+        }  
+    }
+});
