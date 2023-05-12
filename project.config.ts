@@ -1,4 +1,4 @@
-export const lightThemeList = {
+export const lightTheme = {
   // 主题
   'white-color': '#ffffff',
   'primary-color': '#1890ff',
@@ -39,7 +39,7 @@ export const lightThemeList = {
   'bg-body': '#00000000',
 }
 
-export const darkThemeList = {
+export const darkTheme = {
    // 主题
    'white-color': '#ffffff',
    'primary-color': '#1890ff',
