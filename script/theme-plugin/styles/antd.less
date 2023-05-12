@@ -1,0 +1,100 @@
+@import 'ant-design-vue/dist/antd.less';
+.ant-select-dropdown {}
+
+.ant-switch {
+    &-handle {
+        &::before {
+            @apply bg-white;
+        }
+    }
+}
+
+.ant-btn-lg {
+    @apply px-9 h-12;
+}
+
+.ant-tag {
+    @apply mx-3 !important;
+}
+.ant-alert {
+    @apply m-3 !important;
+}
+
+@selectors: primary, success, alarm, warning, error, info;
+
+each(@selectors, {
+    // 按钮
+    .ant-btn-@{value} {  
+        @apply ~ "bg-@{value} border-@{value} text-white";   
+        &:hover {
+            @apply ~ "bg-@{value}-hover border-@{value}-hover text-white";   
+        }
+        &:active, &:focus {
+            @apply ~ "bg-@{value}-active border-@{value}-active text-white";   
+        }
+        // 禁用
+        &[disabled] {
+            @apply ~ "bg-@{value}-disable border-@{value}-disable text-white";   
+            &:hover {
+                @apply ~ "bg-@{value}-disable border-@{value}-disable text-white";   
+            }
+            &:active, &:focus {
+                @apply ~ "bg-@{value}-disable border-@{value}-disable text-white";   
+            }
+        } 
+    }
+    // 二级按钮
+    .ant-btn-@{value}-line {
+        @apply ~ "border-@{value} text-@{value} bg-transparent";  
+        &:hover {
+            @apply ~ "border-@{value}-hover text-@{value}-hover bg-transparent";  
+        }
+        &:active, &:focus {
+            @apply ~ "border-@{value}-active text-@{value}-active bg-transparent";  
+        } 
+        // 禁用
+        &[disabled] {
+            @apply ~ "border-@{value}-disable text-@{value}-disable bg-transparent";  
+            &:hover {
+                @apply ~ "border-@{value}-disable text-@{value}-disable bg-transparent";    
+            }
+            &:active, &:focus {
+                @apply ~ "border-@{value}-disable text-@{value}-disable bg-transparent";   
+            }
+        }  
+    }
+    // （文字、图标）按钮
+    .ant-btn-@{value}-text {
+        @apply ~ "border-@{value} border-opacity-0 text-@{value} bg-@{value} bg-opacity-0";  
+        &:hover {
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-hover bg-@{value} bg-opacity-0";  
+        }
+        &:active, &:focus {
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-active bg-@{value} bg-opacity-0";  
+        } 
+        // 禁用
+        &[disabled] {
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-disable bg-@{value} bg-opacity-0";  
+            &:hover {
+                @apply ~ "border-@{value} border-opacity-0 text-@{value}-disable bg-@{value} bg-opacity-0";    
+            }
+            &:active, &:focus {
+                @apply ~ "border-@{value} border-opacity-0 text-@{value}-disable bg-@{value} bg-opacity-0";   
+            }
+        }
+        &[ant-click-animating-without-extra-node='true']::after {
+            display: none;
+        }
+    }
+
+
+    // 标签
+    .ant-tag[type="@{value}"] {
+        @apply ~"text-@{value} border-@{value} bg-transparent";
+    }
+
+    // 提示
+    .ant-alert-@{value} {
+        @apply ~ "bg-@{value} border-@{value} bg-opacity-10 border border-solid";
+    }
+});

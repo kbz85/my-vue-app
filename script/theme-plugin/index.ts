@@ -4,6 +4,8 @@ import path from 'path';
 import fs from 'fs';
 import { createRequire } from 'node:module'
 import { promisify } from 'node:util'
+import './styles/vxe-table.scss'
+import './styles/antd.less'
 interface NodeModuleWithCompile extends NodeModule {
   _compile(code: string, filename: string): any
 }
