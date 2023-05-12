@@ -33,5 +33,10 @@ export interface VxeTableToAntVar {
   '$vxe-table-footer-font-color': 'font-color',
   '$vxe-table-header-background-color': 'border-color-disable',
   '$vxe-table-body-background-color': 'bg-body',
-  '$vxe-table-border-color': 'border-color-tip'
+  '$vxe-table-border-color': 'border-color-tip',
+  '$vxe-table-row-hover-background-color': 'table-hover',
+  '$vxe-table-row-striped-background-color': 'table-hover',
+  '$vxe-table-row-hover-striped-background-color': 'table-hover',
+  '$vxe-table-row-current-background-color': 'table-current',
+  '$vxe-table-row-hover-current-background-color': 'table-current'
 }
