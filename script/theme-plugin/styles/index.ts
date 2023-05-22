@@ -1,4 +1,4 @@
-import { src, dest, series, parallel } from 'gulp'
+import { src, dest, series } from 'gulp'
 import { resolve } from 'path'
 import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
@@ -6,7 +6,7 @@ import less from 'gulp-less'
 import autoprefixer from 'gulp-autoprefixer'
 
 const sass = gulpSass(dartSass);
-const vxePath = resolve(__dirname, './theme-plugin/styles')
+const vxePath = resolve(__dirname, './')
 export const buildScssCss = () => {
     return src(`${vxePath}/*.scss`)
         .pipe(sass().on('error', sass.logError))
@@ -21,8 +21,9 @@ export const buildLessCss = () => {
         .pipe(dest('dist/less'))
 }
 
-
+// @ts-ignore
 export default series(
     async () => buildScssCss(),
     async () => buildLessCss()
 )
+// export default {}

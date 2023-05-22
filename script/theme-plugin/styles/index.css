@@ -5,4 +5,8 @@
 
 html, body, #app {
     @apply w-screen h-screen text-default bg-body;
+    /* font-family: Microsoft YaHei, sans-serif; */
+    font-family: Microsoft YaHei, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+                'Noto Sans', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+                'Noto Color Emoji';
 }

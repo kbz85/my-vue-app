@@ -33,7 +33,7 @@ export const parseHexColor = (color: string) => {
     g: (bigint >> 8) & 255,
     b: bigint & 255,
     a,
-  } as IColorObj
+  }
 }
 
 export function generateVxeStyle(themeList: ThemeList, valueMapping: Partial<VxeTableToAntVar>) {
@@ -59,7 +59,8 @@ export function generateVxeStyle(themeList: ThemeList, valueMapping: Partial<Vxe
   valueMapping = Object.assign({}, baseVxeVar, valueMapping)
   let str = ''
   for (let key in valueMapping) {
-    str += `${key}: ${themeList[valueMapping[key]]};`
+    const value = themeList[valueMapping[key]]
+    if (value) str += `${key}: ${themeList[valueMapping[key]]};`
   }
   return str
 }
@@ -70,9 +71,14 @@ export function setStyleDom(themeList) {
   let rootColors = ''
   keys.forEach(key => {
     const color = parseHexColor(themeList[key])
-    rootColors += `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a}); \n`
-    rootColors += `--${key}-tailwindcss: ${color.r} ${color.g} ${color.b}; \n`
+    
+    if (color) {
+      rootColors += `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a}); \n`
+      rootColors += `--${key}-tailwindcss: ${color.r} ${color.g} ${color.b}; \n`
+    }
   })
+  rootColors += '--tw-text-opacity: 0.8;'
+  rootColors += '--tw-bg-opacity: 0.8;'
   // 2. 配置:root下的cssVar 
   const styleNode = document.createElement('style')
   styleNode.setAttribute('theme', 'root-theme')

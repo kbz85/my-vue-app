@@ -3,9 +3,7 @@ import { generateVxeStyle, parseHexColor } from './util';
 import path from 'path';
 import fs from 'fs';
 import { createRequire } from 'node:module'
-import { promisify } from 'node:util'
-import './styles/vxe-table.scss'
-import './styles/antd.less'
+import { promisify } from 'node:util' 
 interface NodeModuleWithCompile extends NodeModule {
   _compile(code: string, filename: string): any
 }
@@ -90,11 +88,29 @@ export default function ThemePlugin():Plugin{
         }
       }
     },
+    handleHotUpdate({ file, server }) { 
+      if (file.includes('project.config')) {
+        server.ws.send({
+          type: 'custom',
+          event: 'special-update',
+          data: {}
+        })
+        server.restart()
+        return []
+      }
+    },
     transformIndexHtml(html){
       let rootColors = Object.keys(themeConfig).map(key => {
-          const color = parseHexColor(themeConfig[key])
+        const color = parseHexColor(themeConfig[key])
+        const colorType = typeof color
+        if (colorType === 'object') {
           return `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});\n--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`
+        } else {
+          return ''
+        }
       }).join("\n");
+      rootColors += '--tw-text-opacity: 0.8;\n'
+      rootColors += '--tw-bg-opacity: 0.8;'
       return {
         html,
         tags:[

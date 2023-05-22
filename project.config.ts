@@ -1,6 +1,7 @@
 export const lightTheme = {
   // 主题
   'white-color': '#ffffff',
+  'black-color': '#000000',
   'primary-color': '#1890ff',
   'primary-color-hover': '#309bff',
   'primary-color-active': '#1681e5',
@@ -37,35 +38,38 @@ export const lightTheme = {
   'border-color-disable': '#00000005', // 边框4
   // 背景
   'bg-body': '#00000000',
+  // 单个组件样式覆盖
+  'tooltip-bg': '@white-color',
+  'tooltip-color': '@text-color',
 }
-
+// 纯黑色主题
 export const darkTheme = {
-   // 主题
-   'white-color': '#ffffff',
-   'primary-color': '#1890ff',
-   'primary-color-hover': '#3090ea',
-   'primary-color-active': '#1676d0',
-   'primary-color-disable': '#75b5f1',
-   'success-color': '#52c41a',
-   'success-color-hover': '#5eb836',
-   'success-color-active': '#449e1c',
-   'success-color-disable': '#94d079',
-   'alarm-color': '#faad14',
-   'alarm-color-hover': '#e1a631',
-   'alarm-color-active': '#c78c17',
-   'alarm-color-disable': '#ecc476',
-   'error-color': '#ff4d4f',
-   'error-color-hover': '#e65c5f',
-   'error-color-active': '#cc4245',
-   'error-color-disable': '#ef9294',
-   'warning-color': '#fadb14',
-   'warning-color-hover': '#e1ca31',
-   'warning-color-active': '#c8b017',
-   'warning-color-disable': '#ecdc76',
-   'info-color': '#8b909f',
-   'info-color-hover': '#8b909f',
-   'info-color-active': '#717684',
-   'info-color-disable': '#babb2b5bbedc6',
+  'white-color': '#ffffff',
+  'black-color': '#000000',
+  'primary-color': '#1890ff',
+  'primary-color-hover': '#3090ea',
+  'primary-color-active': '#1676d0',
+  'primary-color-disable': '#75b5f1',
+  'success-color': '#52c41a',
+  'success-color-hover': '#5eb836',
+  'success-color-active': '#449e1c',
+  'success-color-disable': '#94d079',
+  'alarm-color': '#faad14',
+  'alarm-color-hover': '#e1a631',
+  'alarm-color-active': '#c78c17',
+  'alarm-color-disable': '#ecc476',
+  'error-color': '#ff4d4f',
+  'error-color-hover': '#e65c5f',
+  'error-color-active': '#cc4245',
+  'error-color-disable': '#ef9294',
+  'warning-color': '#fadb14',
+  'warning-color-hover': '#e1ca31',
+  'warning-color-active': '#c8b017',
+  'warning-color-disable': '#ecdc76',
+  'info-color': '#8b909f',
+  'info-color-hover': '#8b909f',
+  'info-color-active': '#717684',
+  'info-color-disable': '#babb2b5bbedc6',
   // 文字
   'title-color': '#ffffffd9', // 标题文字
   'text-color': '#ffffffa6', // 正文
@@ -76,14 +80,18 @@ export const darkTheme = {
   'border-color-split': '#ffffff33', // 边框2
   'border-color-tip': '#ffffff1f', // 边框3
   'border-color-disable': '#ffffff14', // 边框4
+  
   // 背景
   'bg-body': '#000000',
+
+ 
   // 黑暗模式需要兼容样式
   'background-color-light': '#1f1f1f',
   'component-background': '@background-color-light',
   'background-color-base': '@background-color-light',
   'item-hover-bg': '@background-color-light',
   'primary-1': '@primary-color',
+  // 单个组件样式覆盖
   'checkbox-check-bg': '@background-color-light',
   'alert-message-color': '@white-color',
   'heading-color': '@text-color',
@@ -98,6 +106,74 @@ export const darkTheme = {
   'slider-track-background-color-hover': '@primary-color',
   'tree-node-selected-bg': '@primary-color',
   'table-hover': '#1890ff22',
-  'table-current': '#1890ffa8'
-  // 'select-selection-item-bg': '@background-color-light'
+  'table-current': '#1890ffa8',
+  'tooltip-bg': '@black-color',
+  'tooltip-color': '@text-color'
+}
+
+export const bigDataTheme = {
+  'white-color': '#ffffff',
+  'black-color': '#000000',
+  'primary-color': '#1890ffde',
+  'primary-color-hover': '#3090ea',
+  'primary-color-active': '#1676d0',
+  'primary-color-disable': '#0f4f8b',
+  'success-color': '#52c41a',
+  'success-color-hover': '#5eb836',
+  'success-color-active': '#449e1c',
+  'success-color-disable': '#2e6a13',
+  'alarm-color': '#faad14',
+  'alarm-color-hover': '#e1a631',
+  'alarm-color-active': '#c78c17',
+  'alarm-color-disable': '#865e10',
+  'error-color': '#ff4d4f',
+  'error-color-hover': '#e65c5f',
+  'error-color-active': '#cc4245',
+  'error-color-disable': '#892c2e',
+  'warning-color': '#fadb14',
+  'warning-color-hover': '#e1ca31',
+  'warning-color-active': '#c8b017',
+  'warning-color-disable': '#867610',
+  'info-color': '#8b909f',
+  'info-color-hover': '#8b909f',
+  'info-color-active': '#717684',
+  'info-color-disable': '#4c4f58',
+  // 文字
+  'title-color': '#ffffffd9', // 标题文字
+  'text-color': '#ffffffa6', // 正文
+  'text-color-secondary': '#ffffff73', // 次级文字
+  'disabled-color': '#ffffff40', // 禁用型文字
+  // 边框
+  'border-color-base': '#ffffff40', // 边框1
+  'border-color-split': '#ffffff33', // 边框2
+  'border-color-tip': '#ffffff1f', // 边框3
+  'border-color-disable': '#ffffff14', // 边框4
+  
+  // 背景
+  'bg-body': '#43475c',
+ 
+  // 黑暗模式需要兼容样式
+  'background-color-light': '#54576a',
+  'component-background': '@background-color-light',
+  'background-color-base': '@background-color-light',
+  'item-hover-bg': '@background-color-light',
+  'primary-1': '@primary-color',
+  // 单个组件样式覆盖
+  'checkbox-check-bg': '@background-color-light',
+  'alert-message-color': '@white-color',
+  'heading-color': '@text-color',
+  'divider-color': '@border-color-split',
+  'select-item-selected-bg': '@primary-color',
+  'picker-basic-cell-hover-with-range-color': 'fade(@primary-color, 20)',
+  'picker-basic-cell-active-with-range-color': 'fade(@primary-color, 20)',
+  'slider-dot-border-color-active': '@primary-color',
+  'slider-track-color-active': '@primary-color',
+  'slider-rail-background-color-hover': '@border-color-base',
+  'slider-track-background-color': '@primary-color',
+  'slider-track-background-color-hover': '@primary-color',
+  'tree-node-selected-bg': '@primary-color',
+  'table-hover': '#1890ff22',
+  'table-current': '#1890ffa8',
+  'tooltip-bg': '@background-color-light',
+  'tooltip-color': '@text-color'
 }

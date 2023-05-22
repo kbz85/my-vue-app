@@ -4,16 +4,29 @@
       <a-divider>
         <span>主题色</span>
       </a-divider>
-      <div class="w-full h-[160px] flex">
-        <div class="w-[150px] h-[100px] mx-3" v-for="item of themeList" :key="item">
-          <div :class="['bg-' + item]" class="w-full h-[70%] rounded-t text-white flex items-center justify-center">默认
+      <div class="w-[300px] h-[300px] text-error bg-primary">
+        123123
+      </div>
+      <div class="w-full h-[160px]">
+        <div class="w-full h-[40px] my-3">
+          <div v-for="item of themeListBg" :key="item" :class="[item]"
+            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">默认
           </div>
-          <div :class="['bg-' + item + '-hover']"
-            class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标经过</div>
-          <div :class="['bg-' + item + '-active']"
-            class="w-[50%] h-[30%] float-left text-white flex items-center justify-center">鼠标点击</div>
-          <div :class="['bg-' + item + '-disable']"
-            class="w-full h-[30%] rounded-b float-left text-white flex items-center justify-center">禁用</div>
+        </div>
+        <div class="w-full h-[40px] my-3">
+          <div v-for="item of themeListBgHover" :key="item" :class="[item]"
+            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">鼠标经过、移上
+          </div>
+        </div>
+        <div class="w-full h-[40px] my-3">
+          <div v-for="item of themeListBgActive" :key="item" :class="[item]"
+            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">鼠标点击
+          </div>
+        </div>
+        <div class="w-full h-[40px] my-3">
+          <div v-for="item of themeListBgDisable" :key="item" :class="[item]"
+            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">禁用、失效         
+          </div>
         </div>
       </div>
     </div>
@@ -67,13 +80,30 @@
     </div>
     <div class="">
       <a-divider>
+        <span>阴影</span>
+      </a-divider>
+      <div class="w-full h-[150px] flex">
+        <div class="w-[200px] h-full shadow-low mx-4"></div>
+        <div class="w-[200px] h-full shadow-middle mx-4"></div>
+        <div class="w-[200px] h-full shadow-high mx-4"></div>
+        <div class="w-[200px] h-full shadow-higher mx-4"></div>
+      </div>
+    </div>
+    <div class="">
+      <a-divider>
         <span>按钮</span>
       </a-divider>
       <div class="">
-        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item">{{ item }}</a-button>
+        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item">
+          <a-tooltip :title="item">
+            <span>{{ item }}</span>
+          </a-tooltip>  
+        </a-button>
       </div>
       <div class="my-3">
-        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item" disabled>{{ item }}</a-button>
+        <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item" disabled>
+          {{ item }}
+        </a-button>
       </div>
       <div class="my-3">
         <a-button v-for="item of themeList" class="mx-3" :type="item + '-line'" :key="item">{{ item }}</a-button>
@@ -108,7 +138,7 @@
             </a-menu>
           </template>
         </a-dropdown>
-        <a-dropdown :trigger="['click']"  class="mx-3">
+        <a-dropdown :trigger="['click']" class="mx-3">
           <a-button type="primary">
             下拉框(点击展开)
           </a-button>
@@ -120,7 +150,7 @@
             </a-menu>
           </template>
         </a-dropdown>
-        <a-dropdown :trigger="['contextmenu']"  class="mx-3">
+        <a-dropdown :trigger="['contextmenu']" class="mx-3">
           <a-button type="primary" @click.prevent>
             下拉框(右键展开)
           </a-button>
@@ -317,11 +347,23 @@
   </div>
 </template>
 <script setup lang="ts">
-import { CascaderProps, TreeSelectProps, message } from 'ant-design-vue';
+import { CascaderProps, TreeSelectProps } from 'ant-design-vue';
 // import { setStyleDom } from './styles/color';
 import { reactive, ref } from 'vue';
 const themeList = ref([
   'primary', 'success', 'alarm', 'error', 'warning', 'info'
+])
+const themeListBg = ref([
+  'bg-primary', 'bg-success', 'bg-alarm', 'bg-error', 'bg-warning', 'bg-info'
+])
+const themeListBgHover = ref([
+  'bg-primary-hover', 'bg-success-hover', 'bg-alarm-hover', 'bg-error-hover', 'bg-warning-hover', 'bg-info-hover'
+])
+const themeListBgActive = ref([
+  'bg-primary-active', 'bg-success-active', 'bg-alarm-active', 'bg-error-active', 'bg-warning-active', 'bg-info-active'
+])
+const themeListBgDisable = ref([
+  'bg-primary-disable', 'bg-success-disable', 'bg-alarm-disable', 'bg-error-disable', 'bg-warning-disable', 'bg-info-disable'
 ])
 // setStyleDom()
 // const success = () => {

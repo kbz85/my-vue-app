@@ -4,6 +4,7 @@ specifiers:
   '@rollup/plugin-node-resolve': ^15.0.2
   '@types/gulp': ^4.0.10
   '@types/gulp-autoprefixer': ^0.0.33
+  '@types/gulp-less': ^0.0.33
   '@types/gulp-sass': ^5.0.0
   '@types/node': ^18.16.2
   '@vitejs/plugin-vue': ^4.1.0
@@ -38,6 +39,7 @@ devDependencies:
   '@rollup/plugin-node-resolve': 15.0.2_rollup@3.21.6
   '@types/gulp': 4.0.10
   '@types/gulp-autoprefixer': 0.0.33
+  '@types/gulp-less': 0.0.33
   '@types/gulp-sass': 5.0.0
   '@types/node': 18.16.3
   '@vitejs/plugin-vue': 4.2.1_vite@4.3.4+vue@3.2.47
@@ -465,6 +467,12 @@ packages:
 
   /@types/gulp-autoprefixer/0.0.33:
     resolution: {integrity: sha512-FgunPm1uMroC/w9FCxtQhPPskR/WvnT+sNPxnyldwNXjq8K5ktzZAOqATyrYk0jTgae793uc+k5vsGV6Q+G7xA==}
+    dependencies:
+      '@types/node': 18.16.3
+    dev: true
+
+  /@types/gulp-less/0.0.33:
+    resolution: {integrity: sha512-JdIeiAe6/2ipkUqvsLojaKyLmFv5Kwejd3xmdIh1+a7B/C1uFLfnYTvu2zEpr3sOPx85DcwmMFZnv9FgVGDjBw==}
     dependencies:
       '@types/node': 18.16.3
     dev: true

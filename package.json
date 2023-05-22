@@ -21,6 +21,7 @@
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@types/gulp": "^4.0.10",
     "@types/gulp-autoprefixer": "^0.0.33",
+    "@types/gulp-less": "^0.0.33",
     "@types/gulp-sass": "^5.0.0",
     "@types/node": "^18.16.2",
     "@vitejs/plugin-vue": "^4.1.0",
