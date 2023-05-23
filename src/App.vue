@@ -4,7 +4,7 @@
       <a-divider>
         <span>主题色</span>
       </a-divider>
-      <div class="w-[300px] h-[300px] text-error bg-primary">
+      <div class="w-[300px] h-[300px] text-error bg-primary-color">
         123123
       </div>
       <div class="w-full h-[160px]">
@@ -354,16 +354,16 @@ const themeList = ref([
   'primary', 'success', 'alarm', 'error', 'warning', 'info'
 ])
 const themeListBg = ref([
-  'bg-primary', 'bg-success', 'bg-alarm', 'bg-error', 'bg-warning', 'bg-info'
+  'bg-primary-color', 'bg-success-color', 'bg-alarm-color', 'bg-error-color', 'bg-warning-color', 'bg-info-color'
 ])
 const themeListBgHover = ref([
-  'bg-primary-hover', 'bg-success-hover', 'bg-alarm-hover', 'bg-error-hover', 'bg-warning-hover', 'bg-info-hover'
+  'bg-primary-color-hover', 'bg-success-color-hover', 'bg-alarm-color-hover', 'bg-error-color-hover', 'bg-warning-color-hover', 'bg-info-color-hover'
 ])
 const themeListBgActive = ref([
-  'bg-primary-active', 'bg-success-active', 'bg-alarm-active', 'bg-error-active', 'bg-warning-active', 'bg-info-active'
+  'bg-primary-color-active', 'bg-success-color-active', 'bg-alarm-color-active', 'bg-error-color-active', 'bg-warning-color-active', 'bg-info-color-active'
 ])
 const themeListBgDisable = ref([
-  'bg-primary-disable', 'bg-success-disable', 'bg-alarm-disable', 'bg-error-disable', 'bg-warning-disable', 'bg-info-disable'
+  'bg-primary-color-disable', 'bg-success-color-disable', 'bg-alarm-color-disable', 'bg-error-color-disable', 'bg-warning-color-disable', 'bg-info-color-disable'
 ])
 // setStyleDom()
 // const success = () => {
