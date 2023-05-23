@@ -1,6 +1,16 @@
 import path from "path";
 
 const plugin = require("tailwindcss/plugin");
+/**
+ * @Description: 匹配变量，当前只针对需要默认透明度不为1的
+ * 如：在暗色系主题下，几种主题色需要透明度为0.85.并且需要支持使用其他透明度。
+ *     则需要通过覆盖重写
+ * @Author: z
+ * @Date: 2023-05-23 14:37:06
+ * @LastEditTime: Do not edit
+ * @LastEditors: z
+ * @param {*} type
+ */
 const matchStyle = (type) => {
     const needTransparentColors = [
         "primary-color",
@@ -60,56 +70,12 @@ module.exports = {
             'transparent': '#00000000',
             white: 'rgb(var(--white-color-tailwindcss) / <alpha-value>)'
         },
-        opacity: {
-            'default': '0.8',
-        },
         extend: {
             textColor: {
                 title: 'var(--title-color)',
                 default: 'var(--text-color)',
                 secondary: 'var(--text-color-secondary)',
                 disabled: 'var(--disabled-color)',
-            },
-            backgroundOpacity: {
-                // '': '0.8',
-            },
-            textOpacity: {
-                'default': '0.75',
-                0: '0',
-                5: '0.05',
-                10: '0.1',
-                20: '0.2',
-                25: '0.25',
-                30: '0.3',
-                40: '0.4',
-                50: '0.5',
-                60: '0.6',
-                70: '0.7',
-                75: '0.75',
-                80: '0.8',
-                90: '0.9',
-                95: '0.95',
-                100: '0.8',
-                // '': '0.8',
-                // 100: '0.8'
-            },
-            opacity: {
-                'default': '0.75',
-                0: '0',
-                5: '0.05',
-                10: '0.1',
-                20: '0.2',
-                25: '0.25',
-                30: '0.3',
-                40: '0.4',
-                50: '0.5',
-                60: '0.6',
-                70: '0.7',
-                75: '0.75',
-                80: '0.8',
-                90: '0.9',
-                95: '0.95',
-                100: '0.8',
             },
             borderColor: {
                 default: 'var(--border-color-base)',
@@ -118,7 +84,10 @@ module.exports = {
                 disable: 'var(--border-color-disable)',
             },
             backgroundColor: {
-                body: 'var(--bg-body)'
+                body: 'var(--bg-body)', // 系统背景色
+                popper: 'var(--tooltip-bg)', // 悬浮层
+                modal: 'var(--modal-content-bg)',
+
             },
             boxShadow: {
                 low: '0 2px 8px #0000001f',
@@ -151,7 +120,7 @@ module.exports = {
                         const name = matchStyle(className);
                         if (name != null) {
                             utilities[`.${className}`] = {
-                                [`--tw-${name[1]}-opacity`]: "0.8",
+                                [`--tw-${name[1]}-opacity`]: "0.85",
                                 [name[0]]: `rgb(var(--${color}-tailwindcss) / var(--tw-${name[1]}-opacity))`,
                             };
                         }

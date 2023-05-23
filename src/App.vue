@@ -4,7 +4,8 @@
       <a-divider>
         <span>主题色</span>
       </a-divider>
-      <div class="w-[300px] h-[300px] text-error hover:bg-primary-color">
+      <div
+        class="w-[300px] h-[300px] text-error bg-primary-color hover:bg-primary-color-hover active:bg-primary-color-active">
         123123
       </div>
       <div class="w-full h-[160px]">
@@ -25,7 +26,7 @@
         </div>
         <div class="w-full h-[40px] my-3">
           <div v-for="item of themeListBgDisable" :key="item" :class="[item]"
-            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">禁用、失效         
+            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">禁用、失效
           </div>
         </div>
       </div>
@@ -97,7 +98,7 @@
         <a-button v-for="item of themeList" class="mx-3" :type="item" :key="item">
           <a-tooltip :title="item">
             <span>{{ item }}</span>
-          </a-tooltip>  
+          </a-tooltip>
         </a-button>
       </div>
       <div class="my-3">
@@ -343,6 +344,17 @@
           <vxe-column field="age" title="Age"></vxe-column>
         </vxe-table>
       </div>
+      <a-divider>
+        <span>弹层</span>
+      </a-divider>
+      <div class="m-3">
+        <a-button type="primary" @click="showModal">Open Modal</a-button>
+        <a-modal v-model:visible="visible" title="Basic Modal" @ok="handleOk">
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </a-modal>
+      </div>
     </div>
   </div>
 </template>
@@ -480,12 +492,23 @@ const treeData = ref<TreeSelectProps['treeData']>([
   },
 ])
 
-const tableData = ref<UserVO[]>([
+const tableData = ref([
   { id: 10001, name: 'Test1', role: 'Develop', sex: 'Man', age: 28, address: 'test abc' },
   { id: 10002, name: 'Test2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
   { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
   { id: 10004, name: 'Test4', role: 'Designer', sex: 'Women', age: 24, address: 'Shanghai' }
 ])
+
+const visible = ref<boolean>(false);
+
+const showModal = () => {
+  visible.value = true;
+};
+
+const handleOk = (e: MouseEvent) => {
+  console.log(e);
+  visible.value = false;
+};
 </script>
 <style lang="less" scoped>
 .demo {

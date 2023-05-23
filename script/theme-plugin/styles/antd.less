@@ -20,6 +20,23 @@
     @apply m-3 !important;
 }
 
+.ant-pagination {
+    &-item {
+        &:hover {
+            @apply border-primary-color text-primary-color-hover;
+            a {
+                @apply text-primary-color-active;
+            }
+        }
+        &:active, &:focus, &.ant-pagination-item-active {
+            @apply border-primary-color-active text-primary-color-active;
+            a {
+                @apply text-primary-color-active;
+            }
+        }
+    }
+}
+
 @selectors: primary, success, alarm, warning, error, info;
 
 each(@selectors, {

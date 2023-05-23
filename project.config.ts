@@ -38,10 +38,13 @@ export const lightTheme = {
   'border-color-tip': '#0000000a', // 边框3
   'border-color-disable': '#00000005', // 边框4
   // 背景
-  'bg-body': '#00000000',
+  'bg-body': '#f9fbfc',
   // 单个组件样式覆盖
-  'tooltip-bg': '@white-color',
+  'tooltip-bg': '#ffffff',
   'tooltip-color': '@text-color',
+  'modal-header-bg': '#ffffff',
+  'modal-content-bg': '#ffffff',
+  'modal-footer-bg': '#ffffff',
 }
 
 // 纯黑色主题
@@ -117,7 +120,8 @@ export const darkTheme = {
 export const bigDataTheme = {
   'white-color': '#ffffff',
   'black-color': '#000000',
-  'primary-color': '#1890ffde',
+  'primary-color': '#1890ff',
+  // 'primary-color': '#1890ff',
   'primary-color-hover': '#3090ea',
   'primary-color-active': '#1676d0',
   'primary-color-disable': '#0f4f8b',
@@ -153,14 +157,22 @@ export const bigDataTheme = {
   'border-color-disable': '#ffffff14', // 边框4
   
   // 背景
-  'bg-body': '#43475c',
- 
+  'bg-body': '#292d45',
+  'primary-1': '@primary-color-active',
+  'primary-2': '@primary-color-active',
+  'primary-3': '@primary-color-active',
+  'primary-4': '@primary-color-active',
+  'primary-5': '@primary-color-active',
+  'primary-6': '@primary-color-active',
+  'primary-7': '@primary-color-active',
+  'primary-8': '@primary-color-active',
+  'primary-9': '@primary-color-active',
+  'primary-10': '@primary-color-active',
   // 黑暗模式需要兼容样式
   'background-color-light': '#54576a',
   'component-background': '@background-color-light',
   'background-color-base': '@background-color-light',
   'item-hover-bg': '@background-color-light',
-  'primary-1': '@primary-color',
   // 单个组件样式覆盖
   'checkbox-check-bg': '@background-color-light',
   'alert-message-color': '@white-color',
@@ -177,8 +189,11 @@ export const bigDataTheme = {
   'tree-node-selected-bg': '@primary-color',
   'table-hover': '#1890ff22',
   'table-current': '#1890ffa8',
-  'tooltip-bg': '@background-color-light',
-  'tooltip-color': '@text-color'
+  'tooltip-bg': '#54576a',
+  'tooltip-color': '@text-color',
+  'modal-header-bg': '#39415a',
+  'modal-content-bg': '#39415a',
+  'modal-footer-bg': '#39415a',
 }
 
-export const themeTransparent = false
+export const themeTransparent = true
