@@ -4,7 +4,7 @@
       <a-divider>
         <span>主题色</span>
       </a-divider>
-      <div class="w-[300px] h-[300px] text-error bg-primary-color">
+      <div class="w-[300px] h-[300px] text-error hover:bg-primary-color">
         123123
       </div>
       <div class="w-full h-[160px]">

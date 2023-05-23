@@ -3,7 +3,7 @@ import { log } from "console";
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
 const matchStyle = (type) => {
-  // if (type.includes('hover') || type.includes('active') || type.includes('disable')) return null
+  // const typeArr = type.split(':')
   const needTransparentColors = [
     "primary-color",
     "success-color",
@@ -11,7 +11,8 @@ const matchStyle = (type) => {
     "error-color",
     "alarm-color",
   ];
-  const typeArr = type.split("");
+  const typeArr = type.split(":");
+  if (typeArr.length >= 2) type = typeArr[1]
   let arr = [];
   for (let index = 0; index < needTransparentColors.length; index++) {
     const element = needTransparentColors[index];
@@ -23,21 +24,6 @@ const matchStyle = (type) => {
       return;
     }
   }
-  // for (const color of needTransparentColors) {
-  //   if (Object.hasOwnProperty.call(needTransparentColors, color)) {
-  //     const element = needTransparentColors[color];
-  //     if (type === 'text-' + element) return arr = ["color", "text"];
-  //     else if (type === 'bg-' + element) arr = ["background-color", "bg"];
-  //     else if (type === 'border-' + element) arr = ["border-color", "border"];
-  //     else return arr = null
-  //   }
-  // }
-  // const index = needTransparentColors.forEach(color => {
-  //   if (type === 'text-' + color)
-  // })
-  // if (type.includes("text")) arr = ["color", "text"];
-  // else if (type.includes("bg")) arr = ["background-color", "bg"];
-  // else if (type.includes("border")) arr = ["border-color", "border"];
   return arr;
 };
 export default {
