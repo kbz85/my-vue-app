@@ -1,3 +1,4 @@
+// 白色主题
 export const lightTheme = {
   // 主题
   'white-color': '#ffffff',
@@ -42,6 +43,7 @@ export const lightTheme = {
   'tooltip-bg': '@white-color',
   'tooltip-color': '@text-color',
 }
+
 // 纯黑色主题
 export const darkTheme = {
   'white-color': '#ffffff',
@@ -111,6 +113,7 @@ export const darkTheme = {
   'tooltip-color': '@text-color'
 }
 
+//  大数据主题
 export const bigDataTheme = {
   'white-color': '#ffffff',
   'black-color': '#000000',
@@ -177,3 +180,5 @@ export const bigDataTheme = {
   'tooltip-bg': '@background-color-light',
   'tooltip-color': '@text-color'
 }
+
+export const themeTransparent = false
