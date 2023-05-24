@@ -1,13 +1,61 @@
-// import { lightTheme as theme1, darkTheme as theme2 } from './script/theme-plugin/theme/theme-default'
-// import { lightTheme as theme1, darkTheme as theme2  } from "./script/theme-plugin/theme/theme-default"
-// 白色主题
-// export const lightTheme = Object.assign({}, theme1)
-// 黑色主题
-export const bigDataTheme = {
-    'root-entry-name': 'variable',
+export const lightTheme = {
+    // 主题
     'white-color': '#ffffff',
     'black-color': '#000000',
-    'primary-color': 'var(--text-color)',
+    'primary-color': '#1890ff',
+    'primary-color-hover': '#309bff',
+    'primary-color-active': '#1681e5',
+    'primary-color-disable': '#74bdff',
+    'success-color': '#52c41a',
+    'success-color-hover': '#64ca31',
+    'success-color-active': '#4ab017',
+    'success-color-disable': '#97dc76',
+    'alarm-color': '#faad14',
+    'alarm-color-hover': '#fbb52c',
+    'alarm-color-active': '#e19b12',
+    'alarm-color-disable': '#fcce72',
+    'error-color': '#ff4d4f',
+    'error-color-hover': '#ff5f61',
+    'error-color-active': '#e54547',
+    'error-color-disable': '#ff9496',
+    'warning-color': '#fadb14',
+    'warning-color-hover': '#fbd42c',
+    'warning-color-active': '#e1c512',
+    'warning-color-disable': '#fcea72',
+    'info-color': '#8b909f',
+    'info-color-hover': '#979ba9',
+    'info-color-active': '#7d818f',
+    'info-color-disable': '#babdc6',
+    // 文字
+    'title-color': '#000000d9', // 标题文字
+    'text-color': '#000000a6', // 正文
+    'text-color-secondary': '#00000073', // 次级文字
+    'disabled-color': '#00000040', // 禁用型文字
+    // 边框
+    'border-color-base': '#00000026', // 边框1
+    'border-color-split': '#0000000f', // 边框2
+    'border-color-tip': '#0000000a', // 边框3
+    'border-color-disable': '#00000005', // 边框4
+    // 背景
+    'bg-body': '#f9fbfc',
+    // 单个组件样式覆盖
+    'tooltip-bg': '#ffffff',
+    'tooltip-color': '@text-color',
+    'model-bg': '#ffffff',
+    'table-hover': '@primary-color-hover',
+    'table-current': '@primary-color-active',
+    'background-color-light': '#ffffff',
+  
+    'modal-header-bg': '@model-bg',
+    'modal-content-bg': '@model-bg',
+    'modal-footer-bg': '@model-bg',
+  }
+  
+  
+  export const darkTheme = {
+    'white-color': '#ffffff',
+    'black-color': '#000000',
+    'primary-color': '#1890ff',
     // 'primary-color': '#1890ff',
     'primary-color-hover': '#3090ea',
     'primary-color-active': '#1676d0',
@@ -42,7 +90,7 @@ export const bigDataTheme = {
     'border-color-split': '#ffffff33', // 边框2
     'border-color-tip': '#ffffff1f', // 边框3
     'border-color-disable': '#ffffff14', // 边框4
-
+  
     // 背景
     'bg-body': '#292d45',
     'tooltip-bg': '#54576a',
@@ -50,11 +98,11 @@ export const bigDataTheme = {
     'table-hover': '#1890ff22',
     'table-current': '#1890ffa8',
     'background-color-light': '#54576a',
-
+  
     'modal-header-bg': '@model-bg',
     'modal-content-bg': '@model-bg',
     'modal-footer-bg': '@model-bg',
-
+  
     'primary-1': '@primary-color-active',
     'primary-2': '@primary-color-active',
     'primary-3': '@primary-color-active',
@@ -66,7 +114,7 @@ export const bigDataTheme = {
     'primary-9': '@primary-color-active',
     'primary-10': '@primary-color-active',
     // 黑暗模式需要兼容样式
-
+  
     'component-background': '@background-color-light',
     'background-color-base': '@background-color-light',
     'item-hover-bg': '@background-color-light',
@@ -84,8 +132,7 @@ export const bigDataTheme = {
     'slider-track-background-color': '@primary-color',
     'slider-track-background-color-hover': '@primary-color',
     'tree-node-selected-bg': '@primary-color',
-
+  
     'tooltip-color': '@text-color'
-}
-
+  }
 export const themeTransparent = true
