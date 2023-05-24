@@ -76,12 +76,7 @@ export default function ThemePlugin():Plugin{
       themeConfig = currentThemeConfig
       const keys = Object.keys(currentThemeConfig)
       const vars = Object.fromEntries(keys.map(key => {
-        if(key==='text-color-secondary'){
-          return [key,`#ffffff`]
-        }
-        if(key==='disabled-color'){
-          return [key,`#ffffff`]
-        }
+
         return [key,`var(--${key})`]
       }))
       console.log(vars)
