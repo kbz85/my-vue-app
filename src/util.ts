@@ -1,4 +1,4 @@
-import { ThemeList, VxeTableToAntVar } from "./type"
+import { Theme } from "./type"
 
 /**
  * @Description: 驼峰转下划线
@@ -36,7 +36,7 @@ export const parseHexColor = (color: string) => {
   }
 }
 
-export function generateVxeStyle(themeList: ThemeList, valueMapping: Partial<VxeTableToAntVar>) {
+export function generateVxeStyle(themeList: Theme, valueMapping: Record<string,any>) {
   const baseVxeVar = {
     '$vxe-font-color': 'text-color',
     '$vxe-primary-color': 'primary-color',

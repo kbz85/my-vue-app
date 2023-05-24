@@ -84,6 +84,49 @@ importers:
         specifier: ^1.4.2
         version: 1.6.4(typescript@5.0.4)
 
+  examples:
+    dependencies:
+      ant-design-vue:
+        specifier: ^3.2.20
+        version: 3.2.20(vue@3.2.47)
+      vue:
+        specifier: ^3.2.47
+        version: 3.2.47
+      vxe-table:
+        specifier: ^4.3.12
+        version: 4.3.12(vue@3.2.47)(xe-utils@3.5.7)
+      xe-utils:
+        specifier: ^3.5.7
+        version: 3.5.7
+    devDependencies:
+      '@types/node':
+        specifier: ^18.16.2
+        version: 18.16.3
+      '@vitejs/plugin-vue':
+        specifier: ^4.1.0
+        version: 4.2.1(vite@4.3.4)(vue@3.2.47)
+      autoprefixer:
+        specifier: ^10.4.14
+        version: 10.4.14(postcss@8.4.23)
+      less:
+        specifier: ^4.1.3
+        version: 4.1.3
+      sass:
+        specifier: ^1.62.1
+        version: 1.62.1
+      tailwindcss:
+        specifier: ^3.3.2
+        version: 3.3.2(ts-node@10.9.1)
+      typescript:
+        specifier: ^5.0.2
+        version: 5.0.4
+      vite:
+        specifier: ^4.3.2
+        version: 4.3.4(@types/node@18.16.3)(less@4.1.3)(sass@1.62.1)
+      vue-tsc:
+        specifier: ^1.4.2
+        version: 1.6.4(typescript@5.0.4)
+
 packages:
 
   /@alloc/quick-lru@5.2.0:
