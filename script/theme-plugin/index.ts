@@ -74,15 +74,26 @@ export default function ThemePlugin():Plugin{
       const themeConfigs = await loadConfigFromBundledFile(themeConfigPath, code)
       const currentThemeConfig = themeConfigs[`${VITE_APP_THEME.toString()}Theme`] || {}
       themeConfig = currentThemeConfig
+      const keys = Object.keys(currentThemeConfig)
+      const vars = Object.fromEntries(keys.map(key => {
+        if(key==='text-color-secondary'){
+          return [key,`#ffffff`]
+        }
+        if(key==='disabled-color'){
+          return [key,`#ffffff`]
+        }
+        return [key,`var(--${key})`]
+      }))
+      console.log(vars)
       return {
         css: {
           preprocessorOptions: {
             less: {
               javascriptEnabled: true,
-              modifyVars: currentThemeConfig
-            },
-            scss: {
-              additionalData: generateVxeStyle(currentThemeConfig,{})
+              modifyVars: {
+                ...vars,
+                'table-border-color':'#000'
+              }
             }
           }
         }
