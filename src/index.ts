@@ -1,5 +1,5 @@
 import {Plugin, Rollup, loadEnv} from 'vite';
-import { generateVxeStyle, parseHexColor } from './util';
+import {  parseHexColor } from './util';
 import path from 'path';
 import fs from 'fs';
 import { createRequire } from 'node:module'
@@ -38,10 +38,10 @@ async function loadConfigFromBundledFile(
   return raw.__esModule ? raw.default : raw
 }
 export default function ThemePlugin():Plugin{
-  let themeConfig = null
+  let themeConfig:any = null
   return {
     name:'vite-theme-plugin',
-    config:async (config,env) => {
+    config:async (_,env) => {
       const cwd = process.cwd()
       const localEnv = loadEnv(env.mode, cwd)
       const VITE_APP_THEME = (localEnv.VITE_APP_THEME || ThemeType.LIGHT) as ThemeType
@@ -79,7 +79,6 @@ export default function ThemePlugin():Plugin{
 
         return [key,`var(--${key})`]
       }))
-      console.log(vars)
       return {
         css: {
           preprocessorOptions: {
@@ -107,7 +106,12 @@ export default function ThemePlugin():Plugin{
     },
     transformIndexHtml(html){
       let rootColors = Object.keys(themeConfig).map(key => {
-        const color = parseHexColor(themeConfig[key])
+        const color = parseHexColor(themeConfig[key]) as {
+          r: number;
+          g: number;
+          b: number;
+          a: number;
+      }
         const colorType = typeof color
         if (colorType === 'object') {
           return `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});\n--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`
