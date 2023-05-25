@@ -119,19 +119,18 @@ export default function ThemePlugin():Plugin{
           return ''
         }
       }).join("\n");
-      rootColors += '--tw-text-opacity: 0.8;\n'
-      rootColors += '--tw-bg-opacity: 0.8;'
+      
       return {
         html,
         tags:[
-          { 
-            tag:'style',
-            attrs:{theme:'root-theme'},
-            children:`:root {
-              ${rootColors}
-            }`,
-            injectTo:'head'
-          }
+          // { 
+          //   tag:'style',
+          //   attrs:{theme:'root-theme'},
+          //   children:`:root {
+          //     ${rootColors}
+          //   }`,
+          //   injectTo:'head'
+          // }
         ]
       }
     }
