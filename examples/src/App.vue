@@ -4,10 +4,13 @@
       <a-divider>
         <span>主题色</span>
       </a-divider>
-      <div
+      <div class="">
+        <color-picker></color-picker>
+      </div>
+      <!-- <div
         class="w-[300px] h-[300px] text-error bg-primary-color hover:bg-primary-color-hover active:bg-primary-color-active">
         123123
-      </div>
+      </div> -->
       <div class="w-full h-[160px]">
         <div class="w-full h-[40px] my-3">
           <div v-for="item of themeListBg" :key="item" :class="[item]"
@@ -359,6 +362,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import ColorPicker from './components/color-picker.vue'
 import { CascaderProps, TreeSelectProps } from 'ant-design-vue';
 // import { setStyleDom } from './styles/color';
 import { reactive, ref } from 'vue';
