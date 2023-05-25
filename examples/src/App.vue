@@ -1,11 +1,12 @@
 <template>
   <div class="w-full h-full p-5 demo">
+    <color-picker :color="theme['primary-color']"></color-picker>
     <div class="">
       <a-divider>
         <span>主题色</span>
       </a-divider>
       <div class="">
-        <color-picker></color-picker>
+        <!-- <color-picker ></color-picker> -->
       </div>
       <!-- <div
         class="w-[300px] h-[300px] text-error bg-primary-color hover:bg-primary-color-hover active:bg-primary-color-active">
@@ -14,7 +15,8 @@
       <div class="w-full h-[160px]">
         <div class="w-full h-[40px] my-3">
           <div v-for="item of themeListBg" :key="item" :class="[item]"
-            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">默认
+            class="w-[150px] h-[40px] text-white flex items-center justify-center float-left mx-3">
+            <!-- <color-picker :color="theme['primary-color']"></color-picker> -->
           </div>
         </div>
         <div class="w-full h-[40px] my-3">
@@ -366,6 +368,8 @@ import ColorPicker from './components/color-picker.vue'
 import { CascaderProps, TreeSelectProps } from 'ant-design-vue';
 // import { setStyleDom } from './styles/color';
 import { reactive, ref } from 'vue';
+import { darkTheme } from '../project.config';
+const theme = ref(darkTheme)
 const themeList = ref([
   'primary', 'success', 'alarm', 'error', 'warning', 'info'
 ])
