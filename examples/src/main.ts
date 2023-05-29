@@ -1,3 +1,11 @@
+/*
+ * @Author: kbz85 248997917@qq.com
+ * @Date: 2023-05-25 10:14:21
+ * @LastEditors: kbz85 248997917@qq.com
+ * @LastEditTime: 2023-05-29 18:38:21
+ * @FilePath: \my-vue-app\examples\src\main.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { createApp } from 'vue'
 import App from './App.vue'
 // import './styles/index.css'
@@ -31,9 +39,10 @@ const parseHexColor = (color: string) => {
         a,
     }
 }
-const dom = document.getElementById('body')
-Object.keys(darkTheme).map(key => {
-    const color = parseHexColor(darkTheme[key]) as {
+const dom = document.getElementById('body') as HTMLDivElement
+console.log(darkTheme);
+function setVarColor(colorStr:string, key: string | undedined) {
+    const color = parseHexColor(colorStr) as {
         r: number;
         g: number;
         b: number;
@@ -42,7 +51,20 @@ Object.keys(darkTheme).map(key => {
     const colorType = typeof color
     if (colorType === 'object') {
         dom.style.setProperty('--' + key, `rgba(${color.r},${color.g},${color.b}, ${color.a})`)
-        dom.style.setProperty('--' + key + '-tailwindcss', `${color.r} ${color.g} ${color.b}`)
+        dom.style.setProperty('--' +  key + '-tailwindcss', `${color.r} ${color.g} ${color.b}`)
+        return true
+    } else {
+        return false
+    }
+}
+Object.keys(darkTheme).map(key => {
+    const canSetVarColor = setVarColor(darkTheme[key], key)
+    if (!canSetVarColor) {
+        const correspondKey = darkTheme[key]    
+        if (correspondKey) {
+            const resetColor = darkTheme[correspondKey.substring(1)]    
+            if (resetColor) setVarColor(resetColor, key)
+        }
     }
 })
 

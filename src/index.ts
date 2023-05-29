@@ -1,13 +1,14 @@
-import {Plugin, Rollup, loadEnv} from 'vite';
-import {  parseHexColor } from './util';
+import { Plugin, Rollup, loadEnv } from 'vite';
+import { generateVxeStyle, parseHexColor } from './util';
 import path from 'path';
 import fs from 'fs';
 import { createRequire } from 'node:module'
-import { promisify } from 'node:util' 
+import { promisify } from 'node:util'
+import { parse } from 'node:url';
 interface NodeModuleWithCompile extends NodeModule {
   _compile(code: string, filename: string): any
 }
-enum ThemeType{
+enum ThemeType {
   LIGHT = 'light',
   DARK = 'dark'
 }
@@ -26,7 +27,7 @@ async function loadConfigFromBundledFile(
   const defaultLoader = _require.extensions[loaderExt]!
   _require.extensions[loaderExt] = (module: NodeModule, filename: string) => {
     if (filename === realFileName) {
-      ;(module as NodeModuleWithCompile)._compile(bundledCode, filename)
+      ; (module as NodeModuleWithCompile)._compile(bundledCode, filename)
     } else {
       defaultLoader(module, filename)
     }
@@ -37,16 +38,16 @@ async function loadConfigFromBundledFile(
   _require.extensions[loaderExt] = defaultLoader
   return raw.__esModule ? raw.default : raw
 }
-export default function ThemePlugin():Plugin{
-  let themeConfig:any = null
+export default function ThemePlugin(): Plugin {
+  let themeConfig: any = null
   return {
-    name:'vite-theme-plugin',
-    config:async (_,env) => {
+    name: 'vite-theme-plugin',
+    config: async (_, env) => {
       const cwd = process.cwd()
       const localEnv = loadEnv(env.mode, cwd)
       const VITE_APP_THEME = (localEnv.VITE_APP_THEME || ThemeType.LIGHT) as ThemeType
       const themeConfigPath = path.resolve(cwd, 'project.config.ts')
-      const rollup =  await import('rollup') as typeof Rollup
+      const rollup = await import('rollup') as typeof Rollup
 
       const supportedExts = ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
       // use node-resolve to support .ts files
@@ -77,7 +78,7 @@ export default function ThemePlugin():Plugin{
       const keys = Object.keys(currentThemeConfig)
       const vars = Object.fromEntries(keys.map(key => {
 
-        return [key,`var(--${key})`]
+        return [key, `var(--${key})`]
       }))
       return {
         css: {
@@ -86,14 +87,17 @@ export default function ThemePlugin():Plugin{
               javascriptEnabled: true,
               modifyVars: {
                 ...vars,
-                'table-border-color':'#000'
+                'table-border-color': '#000'
               }
+            },
+            scss: {
+              additionalData: generateVxeStyle(currentThemeConfig, {})
             }
           }
         }
       }
     },
-    handleHotUpdate({ file, server }) { 
+    handleHotUpdate({ file, server }) {
       if (file.includes('project.config')) {
         server.ws.send({
           type: 'custom',
@@ -104,14 +108,16 @@ export default function ThemePlugin():Plugin{
         return []
       }
     },
-    transformIndexHtml(html){
+    transformIndexHtml(html) {
+      const rootAst = parse(html)
+      
       let rootColors = Object.keys(themeConfig).map(key => {
         const color = parseHexColor(themeConfig[key]) as {
           r: number;
           g: number;
           b: number;
           a: number;
-      }
+        }
         const colorType = typeof color
         if (colorType === 'object') {
           return `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});\n--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`
@@ -119,10 +125,10 @@ export default function ThemePlugin():Plugin{
           return ''
         }
       }).join("\n");
-      
+
       return {
         html,
-        tags:[
+        tags: [
           // { 
           //   tag:'style',
           //   attrs:{theme:'root-theme'},

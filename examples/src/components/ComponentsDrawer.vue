@@ -8,6 +8,36 @@
        :maskClosable="false"
     @after-visible-change="afterVisibleChange">
     <div class="mt-3">
+      <div class="flex">
+        <div class="bg-primary-color w-[100px] h-[50px]"></div>
+        <div class="bg-success-color w-[100px] h-[50px]"></div>
+        <div class="bg-warning-color w-[100px] h-[50px]"></div>
+        <div class="bg-error-color w-[100px] h-[50px]"></div>
+        <div class="bg-info-color w-[100px] h-[50px]"></div>
+      </div>
+      <div class="flex mt-3">
+        <div class="bg-primary-color-hover w-[100px] h-[50px]"></div>
+        <div class="bg-success-color-hover w-[100px] h-[50px]"></div>
+        <div class="bg-warning-color-hover w-[100px] h-[50px]"></div>
+        <div class="bg-error-color-hover w-[100px] h-[50px]"></div>
+        <div class="bg-info-color-hover w-[100px] h-[50px]"></div>
+      </div>
+      <div class="flex mt-3">
+        <div class="bg-primary-color-active w-[100px] h-[50px]"></div>
+        <div class="bg-success-color-active w-[100px] h-[50px]"></div>
+        <div class="bg-warning-color-active w-[100px] h-[50px]"></div>
+        <div class="bg-error-color-active w-[100px] h-[50px]"></div>
+        <div class="bg-info-color-active w-[100px] h-[50px]"></div>
+      </div>
+      <div class="flex mt-3">
+        <div class="bg-primary-color-disable w-[100px] h-[50px]"></div>
+        <div class="bg-success-color-disable w-[100px] h-[50px]"></div>
+        <div class="bg-warning-color-disable w-[100px] h-[50px]"></div>
+        <div class="bg-error-color-disable w-[100px] h-[50px]"></div>
+        <div class="bg-info-color-disable w-[100px] h-[50px]"></div>
+      </div>
+    </div>
+    <div class="mt-3">
       <div class="my-3">
         <a-divider>
           <span>按钮</span>
@@ -118,7 +148,7 @@
         <span>分页</span>
       </a-divider>
       <a-pagination v-model:current="current" :total="500" />
-    </div>
+    </div> 
     <div class="m-3">
       <a-divider>
         <span>步骤条</span>
