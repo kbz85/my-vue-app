@@ -46,9 +46,9 @@ export const lightTheme = {
     'table-current': '@primary-color-active',
     'background-color-light': '#ffffff',
   
-    'modal-header-bg': '@model-bg',
-    'modal-content-bg': '@model-bg',
-    'modal-footer-bg': '@model-bg',
+    // 'modal-header-bg': '@model-bg',
+    // 'modal-content-bg': '@model-bg',
+    // 'modal-footer-bg': '@model-bg',
   }
   
   
@@ -99,40 +99,40 @@ export const lightTheme = {
     'table-current': '#1890ffa8',
     'background-color-light': '#54576a',
   
-    'modal-header-bg': '@model-bg',
-    'modal-content-bg': '@model-bg',
-    'modal-footer-bg': '@model-bg',
+    // 'modal-header-bg': '@model-bg',
+    // 'modal-content-bg': '@model-bg',
+    // 'modal-footer-bg': '@model-bg',
   
-    'primary-1': '@primary-color-active',
-    'primary-2': '@primary-color-active',
-    'primary-3': '@primary-color-active',
-    'primary-4': '@primary-color-active',
-    'primary-5': '@primary-color-active',
-    'primary-6': '@primary-color-active',
-    'primary-7': '@primary-color-active',
-    'primary-8': '@primary-color-active',
-    'primary-9': '@primary-color-active',
-    'primary-10': '@primary-color-active',
-    // 黑暗模式需要兼容样式
+    // 'primary-1': '@primary-color-active',
+    // 'primary-2': '@primary-color-active',
+    // 'primary-3': '@primary-color-active',
+    // 'primary-4': '@primary-color-active',
+    // 'primary-5': '@primary-color-active',
+    // 'primary-6': '@primary-color-active',
+    // 'primary-7': '@primary-color-active',
+    // 'primary-8': '@primary-color-active',
+    // 'primary-9': '@primary-color-active',
+    // 'primary-10': '@primary-color-active',
+    // // 黑暗模式需要兼容样式
   
-    'component-background': '@background-color-light',
-    'background-color-base': '@background-color-light',
-    'item-hover-bg': '@background-color-light',
-    // 单个组件样式覆盖
-    'checkbox-check-bg': '@background-color-light',
-    'alert-message-color': '@white-color',
-    'heading-color': '@text-color',
-    'divider-color': '@border-color-split',
-    'select-item-selected-bg': '@primary-color',
-    'picker-basic-cell-hover-with-range-color': 'fade(@primary-color, 20)',
-    'picker-basic-cell-active-with-range-color': 'fade(@primary-color, 20)',
-    'slider-dot-border-color-active': '@primary-color',
-    'slider-track-color-active': '@primary-color',
-    'slider-rail-background-color-hover': '@border-color-base',
-    'slider-track-background-color': '@primary-color',
-    'slider-track-background-color-hover': '@primary-color',
-    'tree-node-selected-bg': '@primary-color',
+    // 'component-background': '@background-color-light',
+    // 'background-color-base': '@background-color-light',
+    // 'item-hover-bg': '@background-color-light',
+    // // 单个组件样式覆盖
+    // 'checkbox-check-bg': '@background-color-light',
+    // 'alert-message-color': '@white-color',
+    // 'heading-color': '@text-color',
+    // 'divider-color': '@border-color-split',
+    // 'select-item-selected-bg': '@primary-color',
+    // 'picker-basic-cell-hover-with-range-color': 'fade(@primary-color, 20)',
+    // 'picker-basic-cell-active-with-range-color': 'fade(@primary-color, 20)',
+    // 'slider-dot-border-color-active': '@primary-color',
+    // 'slider-track-color-active': '@primary-color',
+    // 'slider-rail-background-color-hover': '@border-color-base',
+    // 'slider-track-background-color': '@primary-color',
+    // 'slider-track-background-color-hover': '@primary-color',
+    // 'tree-node-selected-bg': '@primary-color',
   
-    'tooltip-color': '@text-color'
+    // 'tooltip-color': '@text-color'
   }
 export const themeTransparent = true

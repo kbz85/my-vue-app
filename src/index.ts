@@ -4,6 +4,9 @@ import path from 'path';
 import fs from 'fs';
 import { createRequire } from 'node:module'
 import { promisify } from 'node:util' 
+import { ThemeOptions } from './type';
+import antdvDefaultVars from './presets/antdvVars';
+import vxeTableDefaultVars from './presets/vxeTableVars';
 interface NodeModuleWithCompile extends NodeModule {
   _compile(code: string, filename: string): any
 }
@@ -37,7 +40,7 @@ async function loadConfigFromBundledFile(
   _require.extensions[loaderExt] = defaultLoader
   return raw.__esModule ? raw.default : raw
 }
-export default function ThemePlugin():Plugin{
+export default function ThemePlugin(options?:ThemeOptions):Plugin{
   let themeConfig:any = null
   return {
     name:'vite-theme-plugin',
@@ -74,20 +77,22 @@ export default function ThemePlugin():Plugin{
       const themeConfigs = await loadConfigFromBundledFile(themeConfigPath, code)
       const currentThemeConfig = themeConfigs[`${VITE_APP_THEME.toString()}Theme`] || {}
       themeConfig = currentThemeConfig
-      const keys = Object.keys(currentThemeConfig)
-      const vars = Object.fromEntries(keys.map(key => {
-
-        return [key,`var(--${key})`]
-      }))
+      const { antdvVars = {},vxeTableVars = {} } = options || {}
+      const additionalData = Object.entries(Object.assign({
+        ...vxeTableDefaultVars
+      },vxeTableVars)).map(([key,value]) => `$${key}:${value}`).join(';') + ';'
       return {
         css: {
           preprocessorOptions: {
             less: {
               javascriptEnabled: true,
-              modifyVars: {
-                ...vars,
+              modifyVars: Object.assign({
+                ...antdvDefaultVars,
                 'table-border-color':'#000'
-              }
+              },antdvVars)
+            },
+            scss: {
+              additionalData
             }
           }
         }

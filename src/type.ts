@@ -45,3 +45,13 @@ export interface Theme {
   'background-color-light': string,
   [key:string]: string
 }
+
+export interface ThemeOptions{
+  antdvVars:{
+    [key:string]:string | number
+  },
+  vxeTableVars:{
+    [key:string]:string | number
+
+  }
+}
