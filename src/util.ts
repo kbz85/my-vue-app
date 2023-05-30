@@ -64,7 +64,30 @@ export function generateVxeStyle(themeList: Theme, valueMapping: Record<string,a
   }
   return str
 }
-export function setStyleDom(themeList) {
+export function setVarColor(varStr: string, colorStr: string, key: string | undefined) {
+  const color = parseHexColor(colorStr) as {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+  };
+  const colorType = typeof color;
+  if (colorType === "object") {
+    varStr += `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});`;
+    varStr += `--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`;
+    return {
+      varStr,
+      success: true
+    };
+  } else {
+    return  {
+      varStr,
+      success: false
+    };
+  }
+}
+
+/* export function setStyleDom(themeList) {
   // 1. 生成css变量
   const keys = Object.keys(themeList)
   const rootCssVar = `:root{$colors}`
@@ -93,4 +116,4 @@ export function setStyleDom(themeList) {
   if (currentStyle) head.removeChild(currentStyle)
 
   head.appendChild(styleNode)
-}
+} */
