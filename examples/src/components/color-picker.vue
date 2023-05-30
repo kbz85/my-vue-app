@@ -2,7 +2,7 @@
  * @Author: kbz85 248997917@qq.com
  * @Date: 2023-05-25 10:14:21
  * @LastEditors: kbz85 248997917@qq.com
- * @LastEditTime: 2023-05-29 17:30:38
+ * @LastEditTime: 2023-05-30 11:44:56
  * @FilePath: \my-vue-app\examples\src\components\color-picker.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -20,7 +20,7 @@ const props = defineProps<{
 }>()
 const selector = ref('')
 function changevalue(value: string) {
-    const dom = document.getElementById('body') as HTMLDivElement
+    const dom = document.getElementsByTagName('body')[0] as HTMLBodyElement
     let strTailwind = ''
     if (value.includes('rgba')) {
         const startIndex = value.indexOf('(') + 1
@@ -35,7 +35,7 @@ function changevalue(value: string) {
     // console.log(dom.style.getPropertyValue('--primary-color'), dom.style.getPropertyValue('--primary-color-tailwindcss'));
 }
 onMounted(() => {
-    const dom = document.getElementById('body') as HTMLDivElement
+    const dom = document.getElementsByTagName('body')[0] as HTMLBodyElement
     selector.value = dom.style.getPropertyValue('--' + props.colorKey)
 })
 </script>
