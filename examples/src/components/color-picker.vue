@@ -29,10 +29,8 @@ function changevalue(value: string) {
     } else {
         strTailwind = value.substring(value.indexOf('(') + 1, value.indexOf(')')).replaceAll(',', ' ').trim();
     }
-    // const strTailwind = value.substring(value.indexOf('(') + 1, value.indexOf(')')).replaceAll(',', ' ').trim()
     dom.style.setProperty('--' + props.colorKey, value)
     if (strTailwind !== '') dom.style.setProperty('--' + props.colorKey + '-tailwindcss', strTailwind)
-    // console.log(dom.style.getPropertyValue('--primary-color'), dom.style.getPropertyValue('--primary-color-tailwindcss'));
 }
 onMounted(() => {
     const dom = document.getElementsByTagName('body')[0] as HTMLBodyElement
