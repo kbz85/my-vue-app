@@ -6,7 +6,7 @@ import { ThemeOptions } from './type';
 import antdvDefaultVars from './presets/antdvVars';
 import vxeTableDefaultVars from './presets/vxeTableVars';
 import { Plugin, Rollup, loadEnv } from "vite";
-import { generateVxeStyle, parseHexColor, setVarColor } from "./util";
+import { setVarColor } from "./util";
 interface NodeModuleWithCompile extends NodeModule {
   _compile(code: string, filename: string): any;
 }
@@ -82,7 +82,7 @@ export default function ThemePlugin(options?:ThemeOptions):Plugin{
       //vxe-table变量
       const additionalData = Object.entries(Object.assign({
         ...vxeTableDefaultVars
-      },vxeTableVars)).map(([key,value]) => `$${key}:${value}`).join(';') + ';'
+      },vxeTableVars)).map(([key,value]) => `${key}:${value}`).join(';') + ';'
       //antdv变量
       const modifyVars = Object.assign({
         ...antdvDefaultVars,

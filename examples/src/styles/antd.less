@@ -56,12 +56,12 @@ each(@selectors, {
         }
         // 禁用
         &[disabled] {
-            @apply ~ "bg-@{value}-color-disable border-@{value}-color-disable text-white";   
+            @apply ~ "bg-@{value}-color-disabled border-@{value}-color-disabled text-white";   
             &:hover {
-                @apply ~ "bg-@{value}-color-disable border-@{value}-color-disable text-white";   
+                @apply ~ "bg-@{value}-color-disabled border-@{value}-color-disabled text-white";   
             }
             &:active, &:focus {
-                @apply ~ "bg-@{value}-color-disable border-@{value}-color-disable text-white";   
+                @apply ~ "bg-@{value}-color-disabled border-@{value}-color-disabled text-white";   
             }
         } 
     }
@@ -76,12 +76,12 @@ each(@selectors, {
         } 
         // 禁用
         &[disabled] {
-            @apply ~ "border-@{value}-color-disable text-@{value}-color-disable bg-transparent";  
+            @apply ~ "border-@{value}-color-disabled text-@{value}-color-disabled bg-transparent";  
             &:hover {
-                @apply ~ "border-@{value}-color-disable text-@{value}-color-disable bg-transparent";    
+                @apply ~ "border-@{value}-color-disabled text-@{value}-color-disabled bg-transparent";    
             }
             &:active, &:focus {
-                @apply ~ "border-@{value}-color-disable text-@{value}-color-disable bg-transparent";   
+                @apply ~ "border-@{value}-color-disabled text-@{value}-color-disabled bg-transparent";   
             }
         }  
     }
@@ -96,12 +96,12 @@ each(@selectors, {
         } 
         // 禁用
         &[disabled] {
-            @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disable bg-@{value}-color bg-opacity-0";  
+            @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disabled bg-@{value}-color bg-opacity-0";  
             &:hover {
-                @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disable bg-@{value}-color bg-opacity-0";    
+                @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disabled bg-@{value}-color bg-opacity-0";    
             }
             &:active, &:focus {
-                @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disable bg-@{value}-color bg-opacity-0";   
+                @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disabled bg-@{value}-color bg-opacity-0";   
             }
         }
         &[ant-click-animating-without-extra-node='true']::after {

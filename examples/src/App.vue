@@ -19,7 +19,7 @@
       </div>
       <div class="flex my-2">
         <div class="w-[100px]">disable:</div>
-        <color-picker v-for="key of themeList" :colorKey="key + '-color-disable'" :key="key"></color-picker>
+        <color-picker v-for="key of themeList" :colorKey="key + '-color-disabled'" :key="key"></color-picker>
       </div>
     </div>
     <div class="">
@@ -40,13 +40,13 @@
           </span>
         </div>
         <div class="m-3 text-4xl text-secondary">
-          次级<color-picker colorKey="text-color-secondary"></color-picker>
+          次级<color-picker colorKey="text-secondary-color"></color-picker>
           <span class="m-2 text-base">
             用于：说明文字、进度条滚动条操作颜色、基础图标（默认下拉箭头、叉）
           </span>
         </div>
         <div class="m-3 text-4xl text-disabled">
-          禁用、失效<color-picker colorKey="disabled-color"></color-picker>
+          禁用、失效<color-picker colorKey="text-disabled-color"></color-picker>
           <span class="m-2 text-base">
             用于：禁用文字、失效图标颜色、提示性文字（请输入）
           </span>
@@ -65,16 +65,16 @@
       </a-divider>
       <div class="w-full h-[120px] flex">
         <div class="w-[150px] h-[120px] mx-3 border-2 border-default border-solid rounded">
-          <color-picker colorKey="border-color-base"></color-picker>
+          <color-picker colorKey="border-base-color"></color-picker>
         </div>
         <div class="w-[150px] h-[120px] mx-3 border-2 border-split border-solid rounded">
-          <color-picker colorKey="border-color-split"></color-picker>
+          <color-picker colorKey="border-light-color"></color-picker>
         </div>
         <div class="w-[150px] h-[120px] mx-3 border-2 border-tip border-solid rounded">
-          <color-picker colorKey="border-color-tip"></color-picker>
+          <color-picker colorKey="border-lighter-color"></color-picker>
         </div>
-        <div class="w-[150px] h-[120px] mx-3 border-2 border-disable border-solid rounded">
-          <color-picker colorKey="border-color-disable"></color-picker>
+        <div class="w-[150px] h-[120px] mx-3 border-2 border-disabled border-solid rounded">
+          <color-picker colorKey="border-extra-light-color"></color-picker>
         </div>
       </div>
     </div>
@@ -90,17 +90,48 @@
       </div>
     </div>
     <components-drawer v-model:show="componentsDrawerShow"></components-drawer>
+    <Grid v-bind="gridOptions" />
   </div>
 </template>
 <script setup lang="ts">
 import ColorPicker from './components/color-picker.vue'
 import ComponentsDrawer from './components/ComponentsDrawer.vue'
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
+import { Grid, VxeGridProps } from 'vxe-table';
 
 const componentsDrawerShow = ref(false)
 function openDrawer() {
   componentsDrawerShow.value = true
 }
+const gridOptions = reactive<VxeGridProps<any>>({
+  border: true,
+  height: 300,
+  align: null,
+  columnConfig: {
+    resizable: true
+  },
+  columns: [
+    { type: 'seq', width: 50 },
+    { field: 'name', title: 'name' },
+    { field: 'sex', title: 'sex', showHeaderOverflow: true },
+    { field: 'address', title: 'Address', showOverflow: true }
+  ],
+  toolbarConfig: {
+    slots: {
+      buttons: 'toolbar_buttons'
+    }
+  },
+  data: [
+    { id: 10001, name: 'Test1', nickname: 'T1', role: 'Develop', sex: 'Man', age: 28, address: 'Shenzhen' },
+    { id: 10002, name: 'Test2', nickname: 'T2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
+    { id: 10003, name: 'Test3', nickname: 'T3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
+    { id: 10004, name: 'Test4', nickname: 'T4', role: 'Designer', sex: 'Women', age: 23, address: 'Shenzhen' },
+    { id: 10005, name: 'Test5', nickname: 'T5', role: 'Develop', sex: 'Women', age: 30, address: 'Shanghai' },
+    { id: 10006, name: 'Test6', nickname: 'T6', role: 'Designer', sex: 'Women', age: 21, address: 'Shenzhen' },
+    { id: 10007, name: 'Test7', nickname: 'T7', role: 'Test', sex: 'Man', age: 29, address: 'Shenzhen' },
+    { id: 10008, name: 'Test8', nickname: 'T8', role: 'Develop', sex: 'Man', age: 35, address: 'Shenzhen' }
+  ]
+})
 const themeList = ref([
   'primary', 'success', 'alarm', 'error', 'warning', 'info'
 ])

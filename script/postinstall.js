@@ -2,6 +2,9 @@ import fs from 'fs'
 
 copyFileSync('./patches/ant-design-vue/lib/notification/style/index-pure.less', './node_modules/ant-design-vue/lib/notification/style/index-pure.less');
 copyFileSync('./patches/ant-design-vue/lib/switch/style/index-pure.less', './node_modules/ant-design-vue/lib/switch/style/index-pure.less');
+copyFileSync('./patches/vxe-table/styles/pager.scss', './node_modules/vxe-table/styles/pager.scss');
+copyFileSync('./patches/vxe-table/styles/table.scss', './node_modules/vxe-table/styles/table.scss');
+copyFileSync('./patches/vxe-table/styles/button.scss', './node_modules/vxe-table/styles/button.scss');
 
 function copyFileSync(source, target) {
  var targetFile = target;
