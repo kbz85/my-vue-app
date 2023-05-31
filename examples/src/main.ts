@@ -2,9 +2,9 @@
  * @Author: kbz85 248997917@qq.com
  * @Date: 2023-05-25 10:14:21
  * @LastEditors: kbz85 248997917@qq.com
- * @LastEditTime: 2023-05-30 11:38:47
+ * @LastEditTime: 2023-05-31 11:17:37
  * @FilePath: \my-vue-app\examples\src\main.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description:
  */
 import { createApp } from 'vue'
 import App from './App.vue'

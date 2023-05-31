@@ -81,7 +81,7 @@ module.exports = {
                 default: 'var(--border-base-color)',
                 light: 'var(--border-light-color)',
                 lighter: 'var(--border-lighter-color)',
-                'extra-light': 'var(--border-extra-light-color)',
+                'extra-light': 'var(--border-color-extra-light)',
             },
             backgroundColor: {
                 body: 'var(--bg-body)', // 系统背景色
@@ -91,7 +91,7 @@ module.exports = {
                 base: 'var(--border-base-color)',
                 light: 'var(--border-light-color)',
                 lighter: 'var(--border-lighter-color)',
-                'extra-light': 'var(--border-extra-light-color)',
+                'extra-light': 'var(--border-color-extra-light)',
             },
             boxShadow: {
                 low: '0 2px 8px #0000001f',

@@ -2,10 +2,25 @@ import { ThemeOptions } from "../type";
 
 const antdvDefaultVars:ThemeOptions['antdvVars'] = {
   'primary-color':'var(--primary-color)',
+  'primary-color-hover':'var(--primary-color-hover)',
+  'primary-color-active':'var(--primary-color-active)',
+  'primary-color-outline':'var(--transparent-color)',
   'success-color':'var(--success-color)',
+  'success-color-hover':'var(--success-color-hover)',
+  'success-color-active':'var(--success-color-active)',
+  'success-color-outline':'var(--transparent-color)',
   'alarm-color':'var(--alarm-color)',
+  'alarm-color-hover':'var(--alarm-color-hover)',
+  'alarm-color-active':'var(--alarm-color-active)',
+  'alarm-color-outline':'var(--transparent-color)',
   'error-color':'var(--error-color)',
+  'error-color-hover':'var(--error-color-hover)',
+  'error-color-active':'var(--error-color-active)',
+  'error-color-outline':'var(--transparent-color)',
   'warning-color':'var(--warning-color)',
+  'warning-color-hover':'var(--warning-color-hover)',
+  'warning-color-active':'var(--warning-color-active)',
+  'warning-color-outline':'var(--transparent-color)',
   'info-color':'var(--info-color)',
   'modal-header-bg':'var(--modal-bg)',
   'modal-content-bg': 'var(--modal-bg)',
@@ -22,7 +37,6 @@ const antdvDefaultVars:ThemeOptions['antdvVars'] = {
   'primary-8': 'var(--primary-color-active)',
   'primary-9': 'var(--primary-color-active)',
   'primary-10': 'var(--primary-color-active)',
-  // 黑暗模式需要兼容样式
 
   'component-background': 'var(--module-bg)',
   'background-color-base': 'var(--module-bg)',
