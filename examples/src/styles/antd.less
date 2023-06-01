@@ -23,15 +23,15 @@
 .ant-pagination {
     &-item {
         &:hover {
-            @apply border-primary-color text-primary-color-hover;
+            @apply border-primary text-primary-hover;
             a {
-                @apply text-primary-color-active;
+                @apply text-primary-active;
             }
         }
         &:active, &:focus, &.ant-pagination-item-active {
-            @apply border-primary-color-active text-primary-color-active;
+            @apply border-primary-active text-primary-active;
             a {
-                @apply text-primary-color-active;
+                @apply text-primary-active;
             }
         }
     }
@@ -47,61 +47,61 @@
 each(@selectors, {
     // 按钮
     .ant-btn-@{value} {  
-        @apply ~ "bg-@{value}-color border-@{value}-color text-white";   
+        @apply ~ "bg-@{value} border-@{value} text-white";   
         &:hover {
-            @apply ~ "bg-@{value}-color-hover border-@{value}-color-hover text-white";   
+            @apply ~ "bg-@{value}-hover border-@{value}-hover text-white";   
         }
         &:active, &:focus {
-            @apply ~ "bg-@{value}-color-active border-@{value}-color-active text-white";   
+            @apply ~ "bg-@{value}-active border-@{value}-active text-white";   
         }
         // 禁用
         &[disabled] {
-            @apply ~ "bg-@{value}-color-disabled border-@{value}-color-disabled text-white";   
+            @apply ~ "bg-@{value}-disabled border-@{value}-disabled text-white";   
             &:hover {
-                @apply ~ "bg-@{value}-color-disabled border-@{value}-color-disabled text-white";   
+                @apply ~ "bg-@{value}-disabled border-@{value}-disabled text-white";   
             }
             &:active, &:focus {
-                @apply ~ "bg-@{value}-color-disabled border-@{value}-color-disabled text-white";   
+                @apply ~ "bg-@{value}-disabled border-@{value}-disabled text-white";   
             }
         } 
     }
     // 二级按钮
     .ant-btn-@{value}-line {
-        @apply ~ "border-@{value}-color text-@{value}-color bg-transparent";  
+        @apply ~ "border-@{value} text-@{value} bg-transparent";  
         &:hover {
-            @apply ~ "border-@{value}-color-hover text-@{value}-color-hover bg-transparent";  
+            @apply ~ "border-@{value}-hover text-@{value}-hover bg-transparent";  
         }
         &:active, &:focus {
-            @apply ~ "border-@{value}-color-active text-@{value}-color-active bg-transparent";  
+            @apply ~ "border-@{value}-active text-@{value}-active bg-transparent";  
         } 
         // 禁用
         &[disabled] {
-            @apply ~ "border-@{value}-color-disabled text-@{value}-color-disabled bg-transparent";  
+            @apply ~ "border-@{value}-disabled text-@{value}-disabled bg-transparent";  
             &:hover {
-                @apply ~ "border-@{value}-color-disabled text-@{value}-color-disabled bg-transparent";    
+                @apply ~ "border-@{value}-disabled text-@{value}-disabled bg-transparent";    
             }
             &:active, &:focus {
-                @apply ~ "border-@{value}-color-disabled text-@{value}-color-disabled bg-transparent";   
+                @apply ~ "border-@{value}-disabled text-@{value}-disabled bg-transparent";   
             }
         }  
     }
     // （文字、图标）按钮
     .ant-btn-@{value}-text {
-        @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color bg-@{value}-color bg-opacity-0";  
+        @apply ~ "border-@{value} border-opacity-0 text-@{value} bg-@{value} bg-opacity-0";  
         &:hover {
-            @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-hover bg-@{value}-color bg-opacity-0";  
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-hover bg-@{value} bg-opacity-0";  
         }
         &:active, &:focus {
-            @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-active bg-@{value}-color bg-opacity-0";  
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-active bg-@{value} bg-opacity-0";  
         } 
         // 禁用
         &[disabled] {
-            @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disabled bg-@{value}-color bg-opacity-0";  
+            @apply ~ "border-@{value} border-opacity-0 text-@{value}-disabled bg-@{value} bg-opacity-0";  
             &:hover {
-                @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disabled bg-@{value}-color bg-opacity-0";    
+                @apply ~ "border-@{value} border-opacity-0 text-@{value}-disabled bg-@{value} bg-opacity-0";    
             }
             &:active, &:focus {
-                @apply ~ "border-@{value}-color border-opacity-0 text-@{value}-color-disabled bg-@{value}-color bg-opacity-0";   
+                @apply ~ "border-@{value} border-opacity-0 text-@{value}-disabled bg-@{value} bg-opacity-0";   
             }
         }
         &[ant-click-animating-without-extra-node='true']::after {
@@ -112,11 +112,11 @@ each(@selectors, {
 
     // 标签
     .ant-tag[type="@{value}"] {
-        @apply ~"text-@{value}-color border-@{value}-color bg-transparent";
+        @apply ~"text-@{value} border-@{value} bg-transparent";
     }
 
     // 提示
     .ant-alert-@{value} {
-        @apply ~ "bg-@{value}-color border-@{value}-color bg-opacity-10 border border-solid";
+        @apply ~ "bg-@{value} border-@{value} bg-opacity-10 border border-solid";
     }
 });
