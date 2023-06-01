@@ -64,27 +64,18 @@ export function generateVxeStyle(themeList: Theme, valueMapping: Record<string,a
   }
   return str
 }
-export function setVarColor(varStr: string, colorStr: string, key: string | undefined) {
-  const color = parseHexColor(colorStr) as {
+export function getVarColor(key: string,value:string) {
+  const color = parseHexColor(value) as {
     r: number;
     g: number;
     b: number;
     a: number;
   };
   const colorType = typeof color;
-  if (colorType === "object") {
-    varStr += `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});`;
-    varStr += `--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`;
-    return {
-      varStr,
-      success: true
-    };
-  } else {
-    return  {
-      varStr,
-      success: false
-    };
-  }
+  if (colorType !== "object") {
+    throw Error('parse color error')
+  } 
+  return `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`
 }
 
 /* export function setStyleDom(themeList) {
