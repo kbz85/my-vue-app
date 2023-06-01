@@ -1,5 +1,7 @@
 import { Theme } from "./type"
 
+
+const baseColorKeys = ['primary-color','success-color','alarm-color','warning-color','error-color','info-color']
 /**
  * @Description: 驼峰转下划线
  * @Author: z
@@ -74,8 +76,13 @@ export function getVarColor(key: string,value:string) {
   const colorType = typeof color;
   if (colorType !== "object") {
     throw Error('parse color error')
-  } 
-  return `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`
+  }
+  const vars = [`--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a})`,`--${key}-tailwindcss: ${color.r} ${color.g} ${color.b}`]
+  if(baseColorKeys.includes(key)){
+    vars.push(`--${key}-50: rgba(${color.r},${color.g},${color.b},0.5)`)
+    vars.push(`--${key}-10: rgba(${color.r},${color.g},${color.b}, 0.1)`)
+  }
+  return vars.join(';')
 }
 
 /* export function setStyleDom(themeList) {

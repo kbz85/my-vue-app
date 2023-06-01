@@ -59,27 +59,27 @@ export const lightTheme = {
   export const darkTheme = {
     'white-color': '#ffffff',
     'black-color': '#000000',
-    'primary-color': '#1890ff',
+    'primary-color': '#1890ffde',
     'primary-color-hover': '#3090ea',
     'primary-color-active': '#1676d0',
     'primary-color-disabled': '#0f4f8b',
-    'success-color': '#52c41a',
+    'success-color': '#52c41ade',
     'success-color-hover': '#5eb836',
     'success-color-active': '#449e1c',
     'success-color-disabled': '#2e6a13',
-    'alarm-color': '#faad14',
+    'alarm-color': '#faad14de',
     'alarm-color-hover': '#e1a631',
     'alarm-color-active': '#c78c17',
     'alarm-color-disabled': '#865e10',
-    'error-color': '#ff4d4f',
+    'error-color': '#ff4d4fde',
     'error-color-hover': '#e65c5f',
     'error-color-active': '#cc4245',
     'error-color-disabled': '#892c2e',
-    'warning-color': '#fadb14',
+    'warning-color': '#fadb14de',
     'warning-color-hover': '#e1ca31',
     'warning-color-active': '#c8b017',
     'warning-color-disabled': '#867610',
-    'info-color': '#8b909f',
+    'info-color': '#8b909fde',
     'info-color-hover': '#8b909f',
     'info-color-active': '#717684',
     'info-color-disabled': '#4c4f58',
@@ -95,13 +95,13 @@ export const lightTheme = {
     'border-extra-light-color': '#ffffff14', // 边框4
   
     //弹层/气泡弹框背景
-    'tooltip-bg': '#ffffff',
+    'tooltip-bg': '#54576a',
     //弹层背景色
-    'modal-bg': '#ffffff',
+    'modal-bg': '#43475c',
     //区域背景色
-    'module-bg': '#ffffff',
+    'module-bg': '#39415a',
     //系统背景色
-    'bg-body':'#f4f4f8'
+    'bg-body':'#292d45'
 
   }
 export const themeTransparent = true

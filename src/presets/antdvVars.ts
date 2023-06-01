@@ -45,7 +45,7 @@ const antdvDefaultVars:ThemeOptions['antdvVars'] = {
   'checkbox-check-bg': 'var(--module-bg)',
   'heading-color': 'var(--text-color)',
   'divider-color': 'var(--border-light-color)',
-  'select-item-selected-bg': 'rgb(var(--primary-color-tailwindcss),0.1)',
+  'select-item-selected-bg': 'var(--primary-color-10)',
   // 'picker-basic-cell-hover-with-range-color': 'fade(var(--primary-color), 20)',
   // 'picker-basic-cell-active-with-range-color': 'fade(var(--primary-color), 20)',
   'slider-dot-border-color-active': 'var(--primary-color)',
