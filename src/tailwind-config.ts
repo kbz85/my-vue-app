@@ -1,6 +1,5 @@
 
-import { Config } from 'tailwindcss';
-const config: Partial<Config> = {
+const config = {
     theme: {
         colors: {
             'primary': 'rgb(var(--primary-color-tailwindcss) / <alpha-value>)',
