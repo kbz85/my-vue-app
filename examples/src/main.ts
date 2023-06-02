@@ -2,7 +2,7 @@
  * @Author: kbz85 248997917@qq.com
  * @Date: 2023-05-25 10:14:21
  * @LastEditors: kbz85 248997917@qq.com
- * @LastEditTime: 2023-05-31 11:17:37
+ * @LastEditTime: 2023-06-02 16:03:51
  * @FilePath: \my-vue-app\examples\src\main.ts
  * @Description:
  */
@@ -16,10 +16,11 @@ import 'ant-design-vue/dist/antd.variable.less'
 import './styles/index.css';
 import './styles/antd.less';
 import './styles/vxe-table.scss';
-import { darkTheme } from '../project.config'
-
-const app = createApp(App);
+import empty from '../../src/directive/empty/directive'
+const app = createApp(App)
 
 app.use(Antd)
 app.use(VXETable)
+app.use(empty)
 app.mount('#app')
+

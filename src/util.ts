@@ -1,4 +1,5 @@
-import { Theme } from "./type"
+import path from "path";
+import fs from "fs";
 
 /**
  * @Description: 驼峰转下划线
@@ -9,7 +10,7 @@ import { Theme } from "./type"
  * @param {*} str
  */
 export function humpToUnderline(str) {
-  return str.replace(/([A-Z])/g, "-$1").toLowerCase()
+  return str.replace(/([A-Z])/g, "-$1").toLowerCase();
 }
 /**
  * 16进制颜色字符串解析为颜色对象
@@ -17,26 +18,71 @@ export function humpToUnderline(str) {
  * @returns IColorObj
  */
 export const parseHexColor = (color: string) => {
-  if (color.indexOf('#') === -1) return color
-  let hex = color.slice(1)
-  let a = 1
+  if (color.indexOf("#") === -1) return color;
+  let hex = color.slice(1);
+  let a = 1;
   if (hex.length === 3) {
-    hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`
+    hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
   }
   if (hex.length === 8) {
-    a = parseInt(hex.slice(6), 16) / 255
-    hex = hex.slice(0, 6)
+    a = parseInt(hex.slice(6), 16) / 255;
+    hex = hex.slice(0, 6);
   }
-  const bigint = parseInt(hex, 16)
+  const bigint = parseInt(hex, 16);
   return {
     r: (bigint >> 16) & 255,
     g: (bigint >> 8) & 255,
     b: bigint & 255,
     a,
+  };
+};
+/**
+ * @description: 生成var变量字符串
+ * @param {string} varStr 整体var变量字符串
+ * @param {string} colorStr 颜色值
+ * @param {string} key var变量属性
+ * @return {*}
+ */
+export function setVarColor(
+  varStr: string,
+  colorStr: string,
+  key: string | undefined
+) {
+  const color = parseHexColor(colorStr) as {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+  };
+  const colorType = typeof color;
+  if (colorType === "object") {
+    varStr += `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});`;
+    varStr += `--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`;
+    return {
+      varStr,
+      success: true,
+    };
+  } else {
+    return {
+      varStr,
+      success: false,
+    };
   }
 }
 
-export function generateVxeStyle(themeList: Theme, valueMapping: Record<string,any>) {
+export function getDirFiles(dirPath: string) {
+  const directoryPath = path.join(__dirname, dirPath);
+
+  fs.readdir(directoryPath, function (err, files) {
+    if (err) {
+      return console.log("Unable to scan directory: " + err);
+    }
+    files.forEach(function (file) {
+      console.log(file);
+    });
+  });
+}
+/* export function generateVxeStyle(themeList: Theme, valueMapping: Record<string,any>) {
   const baseVxeVar = {
     '$vxe-font-color': 'text-color',
     '$vxe-primary-color': 'primary-color',
@@ -63,30 +109,7 @@ export function generateVxeStyle(themeList: Theme, valueMapping: Record<string,a
     if (value) str += `${key}: ${themeList[valueMapping[key]]};`
   }
   return str
-}
-export function setVarColor(varStr: string, colorStr: string, key: string | undefined) {
-  const color = parseHexColor(colorStr) as {
-    r: number;
-    g: number;
-    b: number;
-    a: number;
-  };
-  const colorType = typeof color;
-  if (colorType === "object") {
-    varStr += `--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a});`;
-    varStr += `--${key}-tailwindcss: ${color.r} ${color.g} ${color.b};`;
-    return {
-      varStr,
-      success: true
-    };
-  } else {
-    return  {
-      varStr,
-      success: false
-    };
-  }
-}
-
+} */
 /* export function setStyleDom(themeList) {
   // 1. 生成css变量
   const keys = Object.keys(themeList)

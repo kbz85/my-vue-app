@@ -1,12 +1,20 @@
-import path from 'path';
-import fs from 'fs';
-import { createRequire } from 'node:module'
-import { promisify } from 'node:util' 
-import { ThemeOptions } from './type';
-import antdvDefaultVars from './presets/antdvVars';
-import vxeTableDefaultVars from './presets/vxeTableVars';
+/*
+ * @Author: kbz85 248997917@qq.com
+ * @Date: 2023-05-25 10:14:21
+ * @LastEditors: kbz85 248997917@qq.com
+ * @LastEditTime: 2023-06-02 10:42:39
+ * @FilePath: \my-vue-app\src\index.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+import path from "path";
+import fs from "fs";
+import { createRequire } from "node:module";
+import { promisify } from "node:util";
+import { ThemeOptions } from "./type";
+import antdvDefaultVars from "./presets/antdvVars";
+import vxeTableDefaultVars from "./presets/vxeTableVars";
 import { Plugin, Rollup, loadEnv } from "vite";
-import { generateVxeStyle, parseHexColor, setVarColor } from "./util";
+import { setVarColor } from "./util";
 interface NodeModuleWithCompile extends NodeModule {
   _compile(code: string, filename: string): any;
 }
@@ -39,8 +47,8 @@ async function loadConfigFromBundledFile(
   _require.extensions[loaderExt] = defaultLoader;
   return raw.__esModule ? raw.default : raw;
 }
-export default function ThemePlugin(options?:ThemeOptions):Plugin{
-  let themeConfig:any = null
+export default function ThemePlugin(options?: ThemeOptions): Plugin {
+  let themeConfig: any = null;
   return {
     name: "vite-theme-plugin",
     config: async (_, env) => {
@@ -76,28 +84,42 @@ export default function ThemePlugin(options?:ThemeOptions):Plugin{
         format: "cjs",
       });
 
-      const themeConfigs = await loadConfigFromBundledFile(themeConfigPath, code)
-      themeConfig= themeConfigs[`${VITE_APP_THEME.toString()}Theme`] || {}
-      const { antdvVars = {},vxeTableVars = {} } = options || {}
+      const themeConfigs = await loadConfigFromBundledFile(
+        themeConfigPath,
+        code
+      );
+      themeConfig = themeConfigs[`${VITE_APP_THEME.toString()}Theme`] || {};
+      const { antdvVars = {}, vxeTableVars = {} } = options || {};
       //vxe-table变量
-      const additionalData = Object.entries(Object.assign({
-        ...vxeTableDefaultVars
-      },vxeTableVars)).map(([key,value]) => `$${key}:${value}`).join(';') + ';'
+      const additionalData =
+        Object.entries(
+          Object.assign(
+            {
+              ...vxeTableDefaultVars,
+            },
+            vxeTableVars
+          )
+        )
+          .map(([key, value]) => `$${key}:${value}`)
+          .join(";") + ";";
       //antdv变量
-      const modifyVars = Object.assign({
-        ...antdvDefaultVars,
-        'table-border-color':'#000'
-      },antdvVars)
+      const modifyVars = Object.assign(
+        {
+          ...antdvDefaultVars,
+          "table-border-color": "#000",
+        },
+        antdvVars
+      );
       return {
         css: {
           preprocessorOptions: {
             less: {
               javascriptEnabled: true,
-              modifyVars: modifyVars
+              modifyVars: modifyVars,
             },
             scss: {
-              additionalData
-            }
+              additionalData,
+            },
           },
         },
       };
@@ -118,7 +140,7 @@ export default function ThemePlugin(options?:ThemeOptions):Plugin{
       let styleStr = 'style="';
       Object.keys(themeConfig).map((key) => {
         const result = setVarColor(styleStr, themeConfig[key], key);
-        styleStr = result.varStr
+        styleStr = result.varStr;
         if (!result.success) {
           const correspondKey = themeConfig[key];
           if (correspondKey) {
@@ -127,8 +149,9 @@ export default function ThemePlugin(options?:ThemeOptions):Plugin{
           }
         }
       });
-      const index = html.indexOf("<body>")
-      html =  html.slice(0, index + 5) + ' ' + styleStr + '">'  + html.slice(index)
+      const index = html.indexOf("<body>");
+      html =
+        html.slice(0, index + 5) + " " + styleStr + '">' + html.slice(index);
       return {
         html,
         tags: [],

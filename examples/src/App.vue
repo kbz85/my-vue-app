@@ -1,6 +1,10 @@
 <template>
   <div class="w-full h-full p-5 demo">
     <a-button type="priamry" @click="openDrawer">展示组件</a-button>
+    <div class="w-full h-[100px]" v-el-empty:buildadmin.value="0"></div>
+    <div class="w-full h-[100px]" v-el-empty:favicon.value="1"></div>
+    <div class="w-full h-[100px]" v-el-empty:logo.value="2"></div>
+    <div class="w-full h-[100px]" v-el-empty:vform-banner.value="value"></div>
     <div class="">
       <a-divider>
         <span>主题色</span>
@@ -96,7 +100,8 @@
 import ColorPicker from './components/color-picker.vue'
 import ComponentsDrawer from './components/ComponentsDrawer.vue'
 import { ref } from 'vue';
-
+const value = ref(0)
+const favicon = ref('favicon')
 const componentsDrawerShow = ref(false)
 function openDrawer() {
   componentsDrawerShow.value = true
@@ -109,5 +114,9 @@ const themeList = ref([
 <style lang="less" scoped>
 .demo {
   overflow-x: hidden;
+}
+.empty-buildadmin-l {
+  // background-image: url('/assets/empty/buildadmin-l.png');
+  // background-image: url("C:\project\my-vue-app\examples\assets\empty\vform-banner.png")
 }
 </style>
