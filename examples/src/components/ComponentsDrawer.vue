@@ -1,12 +1,6 @@
 <template>
-  <a-drawer v-model:visible="visibleDraw"
-       class="custom-class" 
-       title="Basic Drawer" 
-       placement="right" 
-       width="1000px"
-       :mask="false"
-       :maskClosable="false"
-    @after-visible-change="afterVisibleChange">
+  <a-drawer v-model:visible="visibleDraw" class="custom-class" title="Basic Drawer" placement="right" width="1000px"
+    :mask="false" :maskClosable="false" @after-visible-change="afterVisibleChange">
     <div class="mt-3">
       <div class="flex">
         <div class="bg-primary-color w-[100px] h-[50px]"></div>
@@ -148,7 +142,7 @@
         <span>分页</span>
       </a-divider>
       <a-pagination v-model:current="current" :total="500" />
-    </div> 
+    </div>
     <div class="m-3">
       <a-divider>
         <span>步骤条</span>
@@ -285,6 +279,7 @@
         <vxe-column field="sex" title="Sex"></vxe-column>
         <vxe-column field="age" title="Age"></vxe-column>
       </vxe-table>
+      <Grid v-bind="gridOptions" />
     </div>
     <div class="m-3">
       <a-divider>
@@ -297,11 +292,21 @@
         <p>Some contents...</p>
       </a-modal>
     </div>
+    <div class="m-3">
+      <a-divider>
+        <span>缺省命令</span>
+      </a-divider>
+      <div class="w-full h-[100px]" v-el-empty:buildadmin.value="0"></div>
+      <div class="w-full h-[100px]" v-el-empty:favicon.value="null"></div>
+      <div class="w-full h-[100px]" v-el-empty:logo.value="false"></div>
+      <div class="w-full h-[100px]" v-el-empty:vform-banner.value="value"></div>
+    </div>
   </a-drawer>
 </template>
 <script lang='ts' setup>
 import { CascaderProps, TreeSelectProps } from 'ant-design-vue';
 import { onMounted, reactive, ref, watch } from 'vue';
+import { VxeGridProps } from 'vxe-table';
 const props = defineProps<{
   show: boolean
 }>()
@@ -318,6 +323,7 @@ const themeList = ref([
 watch(() => props.show, (value: boolean) => {
   visibleDraw.value = value
 })
+const value = ref(0)
 const value1 = ref('jack')
 const value2 = ref('lucy')
 const value3 = ref('lucy')
@@ -426,6 +432,36 @@ const tableData = ref([
   { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
   { id: 10004, name: 'Test4', role: 'Designer', sex: 'Women', age: 24, address: 'Shanghai' }
 ])
+
+const gridOptions = reactive<VxeGridProps<any>>({
+  border: true,
+  height: 300,
+  align: null,
+  columnConfig: {
+    resizable: true
+  },
+  columns: [
+    { type: 'seq', width: 50 },
+    { field: 'name', title: 'name' },
+    { field: 'sex', title: 'sex', showHeaderOverflow: true },
+    { field: 'address', title: 'Address', showOverflow: true }
+  ],
+  toolbarConfig: {
+    slots: {
+      buttons: 'toolbar_buttons'
+    }
+  },
+  data: [
+    { id: 10001, name: 'Test1', nickname: 'T1', role: 'Develop', sex: 'Man', age: 28, address: 'Shenzhen' },
+    { id: 10002, name: 'Test2', nickname: 'T2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
+    { id: 10003, name: 'Test3', nickname: 'T3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
+    { id: 10004, name: 'Test4', nickname: 'T4', role: 'Designer', sex: 'Women', age: 23, address: 'Shenzhen' },
+    { id: 10005, name: 'Test5', nickname: 'T5', role: 'Develop', sex: 'Women', age: 30, address: 'Shanghai' },
+    { id: 10006, name: 'Test6', nickname: 'T6', role: 'Designer', sex: 'Women', age: 21, address: 'Shenzhen' },
+    { id: 10007, name: 'Test7', nickname: 'T7', role: 'Test', sex: 'Man', age: 29, address: 'Shenzhen' },
+    { id: 10008, name: 'Test8', nickname: 'T8', role: 'Develop', sex: 'Man', age: 35, address: 'Shenzhen' }
+  ]
+})
 
 const visible = ref<boolean>(false);
 

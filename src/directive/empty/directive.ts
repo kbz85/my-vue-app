@@ -50,7 +50,6 @@ export default {
         const value = binding.value;
         const isNumberFlag: boolean =
           toString.call(binding.value) === `[object Number]`;
-        console.log('isNumberFlag', binding, isNumberFlag);
         
         let nodeId = "";
         const keys = Object.keys(binding.modifiers);

@@ -38,6 +38,8 @@ const antdvDefaultVars:ThemeOptions['antdvVars'] = {
   'primary-9': 'var(--primary-color-active)',
   'primary-10': 'var(--primary-color-active)',
 
+  'border-color-base': 'var(--border-base-color)',
+  'border-color-split': 'var(--border-split-color)',
   'component-background': 'var(--module-bg)',
   'background-color-base': 'var(--module-bg)',
   'item-hover-bg': 'var(--module-bg)',
@@ -46,8 +48,6 @@ const antdvDefaultVars:ThemeOptions['antdvVars'] = {
   'heading-color': 'var(--text-color)',
   'divider-color': 'var(--border-light-color)',
   'select-item-selected-bg': 'var(--primary-color-10)',
-  // 'picker-basic-cell-hover-with-range-color': 'fade(var(--primary-color), 20)',
-  // 'picker-basic-cell-active-with-range-color': 'fade(var(--primary-color), 20)',
   'slider-dot-border-color-active': 'var(--primary-color)',
   'slider-track-color-active': 'var(--primary-color)',
   'slider-rail-background-color-hover': 'var(--border-base-color)',

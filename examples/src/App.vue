@@ -1,10 +1,7 @@
 <template>
   <div class="w-full h-full p-5 demo">
     <a-button type="priamry" @click="openDrawer">展示组件</a-button>
-    <div class="w-full h-[100px]" v-el-empty:buildadmin.value="0"></div>
-    <div class="w-full h-[100px]" v-el-empty:favicon.value="1"></div>
-    <div class="w-full h-[100px]" v-el-empty:logo.value="2"></div>
-    <div class="w-full h-[100px]" v-el-empty:vform-banner.value="value"></div>
+
     <div class="">
       <a-divider>
         <span>主题色</span>
@@ -94,50 +91,19 @@
       </div>
     </div>
     <components-drawer v-model:show="componentsDrawerShow"></components-drawer>
-    <Grid v-bind="gridOptions" />
+
   </div>
 </template>
 <script setup lang="ts">
 import ColorPicker from './components/color-picker.vue'
 import ComponentsDrawer from './components/ComponentsDrawer.vue'
-import { reactive, ref } from 'vue';
-import { Grid, VxeGridProps } from 'vxe-table';
+import { ref } from 'vue';
 
-const value = ref(0)
-const favicon = ref('favicon')
 const componentsDrawerShow = ref(false)
 function openDrawer() {
   componentsDrawerShow.value = true
 }
-const gridOptions = reactive<VxeGridProps<any>>({
-  border: true,
-  height: 300,
-  align: null,
-  columnConfig: {
-    resizable: true
-  },
-  columns: [
-    { type: 'seq', width: 50 },
-    { field: 'name', title: 'name' },
-    { field: 'sex', title: 'sex', showHeaderOverflow: true },
-    { field: 'address', title: 'Address', showOverflow: true }
-  ],
-  toolbarConfig: {
-    slots: {
-      buttons: 'toolbar_buttons'
-    }
-  },
-  data: [
-    { id: 10001, name: 'Test1', nickname: 'T1', role: 'Develop', sex: 'Man', age: 28, address: 'Shenzhen' },
-    { id: 10002, name: 'Test2', nickname: 'T2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
-    { id: 10003, name: 'Test3', nickname: 'T3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
-    { id: 10004, name: 'Test4', nickname: 'T4', role: 'Designer', sex: 'Women', age: 23, address: 'Shenzhen' },
-    { id: 10005, name: 'Test5', nickname: 'T5', role: 'Develop', sex: 'Women', age: 30, address: 'Shanghai' },
-    { id: 10006, name: 'Test6', nickname: 'T6', role: 'Designer', sex: 'Women', age: 21, address: 'Shenzhen' },
-    { id: 10007, name: 'Test7', nickname: 'T7', role: 'Test', sex: 'Man', age: 29, address: 'Shenzhen' },
-    { id: 10008, name: 'Test8', nickname: 'T8', role: 'Develop', sex: 'Man', age: 35, address: 'Shenzhen' }
-  ]
-})
+
 const themeList = ref([
   'primary', 'success', 'alarm', 'error', 'warning', 'info'
 ])
