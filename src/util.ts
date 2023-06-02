@@ -1,6 +1,8 @@
 import path from "path";
 import fs from "fs";
 
+
+const baseColorKeys = ['primary-color','success-color','alarm-color','warning-color','error-color','info-color']
 /**
  * @Description: 驼峰转下划线
  * @Author: z
@@ -90,10 +92,10 @@ export function getDirFiles(dirPath: string) {
     '$vxe-info-color': 'info-color',
     '$vxe-warning-color': 'warning-color',
     '$vxe-danger-color': 'error-color',
-    '$vxe-disabled-color': 'disabled-color',
+    '$vxe-disabledd-color': 'disabled-color',
     '$vxe-table-header-font-color': 'title-color',
     '$vxe-table-footer-font-color': 'font-color',
-    '$vxe-table-header-background-color': 'border-color-disable',
+    '$vxe-table-header-background-color': 'border-color-disabled',
     '$vxe-table-body-background-color': 'bg-body',
     '$vxe-table-border-color': 'border-color-tip',
     '$vxe-table-row-hover-background-color': 'primary-color-hover',
@@ -110,6 +112,25 @@ export function getDirFiles(dirPath: string) {
   }
   return str
 } */
+export function getVarColor(key: string,value:string) {
+  const color = parseHexColor(value) as {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+  };
+  const colorType = typeof color;
+  if (colorType !== "object") {
+    throw Error('parse color error')
+  }
+  const vars = [`--${key}: rgba(${color.r},${color.g},${color.b}, ${color.a})`,`--${key}-tailwindcss: ${color.r} ${color.g} ${color.b}`]
+  if(baseColorKeys.includes(key)){
+    vars.push(`--${key}-50: rgba(${color.r},${color.g},${color.b},0.5)`)
+    vars.push(`--${key}-10: rgba(${color.r},${color.g},${color.b}, 0.1)`)
+  }
+  return vars.join(';')
+}
+
 /* export function setStyleDom(themeList) {
   // 1. 生成css变量
   const keys = Object.keys(themeList)

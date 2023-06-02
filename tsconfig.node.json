@@ -6,5 +6,5 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["examples/vite.config.ts", "examples/project.config.ts", "src/**/*.ts"]
+  "include": ["examples/vite.config.ts", "examples/project.config.ts", "src/**/*.ts", "src/tailwind-config.ts"]
 }

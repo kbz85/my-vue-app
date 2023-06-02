@@ -30,11 +30,11 @@
         <div class="bg-info-color-active w-[100px] h-[50px]"></div>
       </div>
       <div class="flex mt-3">
-        <div class="bg-primary-color-disable w-[100px] h-[50px]"></div>
-        <div class="bg-success-color-disable w-[100px] h-[50px]"></div>
-        <div class="bg-warning-color-disable w-[100px] h-[50px]"></div>
-        <div class="bg-error-color-disable w-[100px] h-[50px]"></div>
-        <div class="bg-info-color-disable w-[100px] h-[50px]"></div>
+        <div class="bg-primary-color-disabled w-[100px] h-[50px]"></div>
+        <div class="bg-success-color-disabled w-[100px] h-[50px]"></div>
+        <div class="bg-warning-color-disabled w-[100px] h-[50px]"></div>
+        <div class="bg-error-color-disabled w-[100px] h-[50px]"></div>
+        <div class="bg-info-color-disabled w-[100px] h-[50px]"></div>
       </div>
     </div>
     <div class="mt-3">

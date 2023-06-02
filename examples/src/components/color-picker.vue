@@ -20,7 +20,6 @@ const props = defineProps<{
 }>()
 const selector = ref('')
 function changevalue(value: string) {
-    const dom = document.getElementsByTagName('body')[0] as HTMLBodyElement
     let strTailwind = ''
     if (value.includes('rgba')) {
         const startIndex = value.indexOf('(') + 1
@@ -29,12 +28,11 @@ function changevalue(value: string) {
     } else {
         strTailwind = value.substring(value.indexOf('(') + 1, value.indexOf(')')).replaceAll(',', ' ').trim();
     }
-    dom.style.setProperty('--' + props.colorKey, value)
-    if (strTailwind !== '') dom.style.setProperty('--' + props.colorKey + '-tailwindcss', strTailwind)
+    document.documentElement.style.setProperty('--' + props.colorKey, value)
+    if (strTailwind !== '') document.documentElement.style.setProperty('--' + props.colorKey + '-tailwindcss', strTailwind)
 }
 onMounted(() => {
-    const dom = document.getElementsByTagName('body')[0] as HTMLBodyElement
-    selector.value = dom.style.getPropertyValue('--' + props.colorKey)
+    selector.value = document.documentElement.style.getPropertyValue('--' + props.colorKey)
 })
 </script>
 <style lang='less'></style>

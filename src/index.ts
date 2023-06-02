@@ -14,7 +14,8 @@ import { ThemeOptions } from "./type";
 import antdvDefaultVars from "./presets/antdvVars";
 import vxeTableDefaultVars from "./presets/vxeTableVars";
 import { Plugin, Rollup, loadEnv } from "vite";
-import { setVarColor } from "./util";
+import { getVarColor } from "./util";
+import { parse,HTMLElement } from 'node-html-parser';
 interface NodeModuleWithCompile extends NodeModule {
   _compile(code: string, filename: string): any;
 }
@@ -47,8 +48,8 @@ async function loadConfigFromBundledFile(
   _require.extensions[loaderExt] = defaultLoader;
   return raw.__esModule ? raw.default : raw;
 }
-export default function ThemePlugin(options?: ThemeOptions): Plugin {
-  let themeConfig: any = null;
+export default function ThemePlugin(options?:ThemeOptions):Plugin{
+  let themeConfig:Record<string,any> = {}
   return {
     name: "vite-theme-plugin",
     config: async (_, env) => {
@@ -91,17 +92,9 @@ export default function ThemePlugin(options?: ThemeOptions): Plugin {
       themeConfig = themeConfigs[`${VITE_APP_THEME.toString()}Theme`] || {};
       const { antdvVars = {}, vxeTableVars = {} } = options || {};
       //vxe-table变量
-      const additionalData =
-        Object.entries(
-          Object.assign(
-            {
-              ...vxeTableDefaultVars,
-            },
-            vxeTableVars
-          )
-        )
-          .map(([key, value]) => `$${key}:${value}`)
-          .join(";") + ";";
+      const additionalData = Object.entries(Object.assign({
+        ...vxeTableDefaultVars
+      },vxeTableVars)).map(([key,value]) => `${key}:${value}`).join(';') + ';'
       //antdv变量
       const modifyVars = Object.assign(
         {
@@ -137,23 +130,17 @@ export default function ThemePlugin(options?: ThemeOptions): Plugin {
     },
     transformIndexHtml(html) {
       // 向body中添加样式变量
-      let styleStr = 'style="';
-      Object.keys(themeConfig).map((key) => {
-        const result = setVarColor(styleStr, themeConfig[key], key);
-        styleStr = result.varStr;
-        if (!result.success) {
-          const correspondKey = themeConfig[key];
-          if (correspondKey) {
-            const resetColor = themeConfig[correspondKey.substring(1)];
-            if (resetColor) setVarColor(styleStr, resetColor, key);
-          }
+      let styleStr = Object.entries(themeConfig).map(([key,value]) => getVarColor(key, value)).join(';')
+      const rootNode = parse(html)
+      rootNode.childNodes.forEach(node =>{
+        if(node instanceof HTMLElement && node.rawTagName === 'html'){
+          node.setAttribute('style',styleStr)
         }
-      });
-      const index = html.indexOf("<body>");
-      html =
-        html.slice(0, index + 5) + " " + styleStr + '">' + html.slice(index);
+      })
+      const newHtml = rootNode.innerHTML
+
       return {
-        html,
+        html:newHtml,
         tags: [],
       };
     },
